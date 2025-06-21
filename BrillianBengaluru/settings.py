@@ -60,12 +60,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'BrillianBengaluru.urls'
 
+import os  # Make sure this is at the top of your settings.py if not already
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # ✅ Keep only ONE 'DIRS'
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,6 +76,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'BrillianBengaluru.wsgi.application'
 
