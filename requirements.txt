@@ -1,57 +1,19 @@
-# Core dependencies
+# Core Django + WSGI server
 Django==5.1
-python-decouple==3.8
-mysqlclient==2.2.4
+gunicorn==21.2.0
 
-# Cloudinary for media
+# DB + Env config
+mysqlclient==2.2.4
+python-decouple==3.8
+
+# Static/Media file storage
 cloudinary==1.44.1
 django-cloudinary-storage==0.3.0
-
-# Firebase (optional)
-firebase-admin==6.5.0
-google-auth==2.26.2
-google-auth-httplib2==0.2.0
-google-auth-oauthlib==1.2.0
-google-cloud-core==2.4.1
-google-cloud-firestore==2.17.0
-google-cloud-storage==2.18.0
-google-api-core==2.19.1
-google-api-python-client==2.137.0
-googleapis-common-protos==1.63.2
-httplib2==0.22.0
-rsa==4.9
-
-# Image processing and AI libraries
-opencv-python-headless==4.10.0.84
-numpy==1.26.4
-tensorflow==2.17.0
-scikit-learn==1.5.0
-matplotlib==3.9.0
-seaborn==0.13.2
-pandas==2.2.2
-wordcloud==1.9.4
 
 # Security
 bcrypt==4.1.3
 argon2-cffi==23.1.0
 cryptography==43.0.0
 
-# Web utils and helpers
+# HTTP utilities
 requests==2.31.0
-beautifulsoup4==4.12.3
-lxml==5.2.2
-python-json-logger==2.0.7
-PyYAML==6.0.1
-schedule==1.2.2
-
-# Optional: PDF/Image handling if needed
-pillow==10.2.0
-PyPDF2==3.0.1
-pdfplumber==0.11.5
-fpdf==1.7.2
-
-# Jinja templating
-Jinja2==3.1.3
-
-# For forms (if using them)
-WTForms==3.1.2
