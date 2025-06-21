@@ -17,3 +17,4 @@ cryptography==43.0.0
 
 # HTTP utilities
 requests==2.31.0
+geopy==2.4.1
