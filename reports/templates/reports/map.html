@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 style="text-align:center; margin-top: 20px;">BrillianBengaluru - Cleanliness Map</h2>
+
+<div id="map" style="height: 90vh; width: 100%; margin-top: 10px;"></div>
+
+<!-- Lightbox HTML -->
+<div id="lightbox" onclick="closeLightbox()">
+    <span>&times;</span>
+    <img id="lightbox-img" src="" alt="Report Image">
+</div>
+
+<!-- Leaflet JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    // 1. Initialize the map
+    var map = L.map('map').setView([12.9716, 77.5946], 12);
+
+    // 2. Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19
+    }).addTo(map);
+
+    // 3. Fetch report data
+    fetch('/reports/data/')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(report => {
+                const color = report.status === 'dirty' ? 'red' : 'blue';
+
+                const marker = L.circleMarker([report.lat, report.lng], {
+                    radius: 8,
+                    color: color,
+                    fillColor: color,
+                    fillOpacity: 0.8
+                }).addTo(map);
+
+                let popupContent = `
+                    <b>Status:</b> ${report.status}<br>
+                    <b>Review:</b> ${report.review}<br>
+                    <b>User:</b> ${report.user}<br>
+                    <b>Email:</b> ${report.email}<br>
+                    <b>Address:</b> ${report.address}
+                `;
+
+                if (report.photo_url) {
+                    popupContent += `
+                        <br><br>
+                        <img src="${report.photo_url}" alt="Report Photo" width="100" style="cursor: pointer; border-radius: 8px; box-shadow: 0 0 5px #333;" onclick="openLightbox('${report.photo_url}')">
+                    `;
+                }
+
+                marker.bindPopup(popupContent);
+            });
+        });
+
+    // 4. Lightbox functions
+    function openLightbox(url) {
+        document.getElementById('lightbox-img').src = url;
+        document.getElementById('lightbox').style.display = 'block';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+        document.getElementById('lightbox-img').src = '';
+    }
+</script>
+
+<style>
+    /* Lightbox modal styling */
+    #lightbox {
+        position: fixed;
+        display: none;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    #lightbox img {
+        display: block;
+        max-width: 90%;
+        max-height: 80%;
+        margin: 5% auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #fff;
+    }
+
+    #lightbox span {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        font-size: 40px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <style>
+        #map {
+            height: 90vh;
+            width: 100%;
+        }
+
+        /* Lightbox modal styling */
+        #lightbox {
+            position: fixed;
+            display: none;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        #lightbox img {
+            display: block;
+            max-width: 90%;
+            max-height: 80%;
+            margin: 5% auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #fff;
+        }
+
+        #lightbox span {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    <h2>BrillianBengaluru - Cleanliness Map</h2>
+    {% endblock %}
+    
+    <div id="map"></div>
+
+    <!-- Lightbox HTML -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <span>&times;</span>
+        <img id="lightbox-img" src="" alt="Report Image">
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // 1. Initialize the map
+        var map = L.map('map').setView([12.9716, 77.5946], 12);
+
+        // 2. Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19
+        }).addTo(map);
+
+        // 3. Fetch report data
+        fetch('/reports/data/')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(report => {
+                    const color = report.status === 'dirty' ? 'red' : 'blue';
+
+                    const marker = L.circleMarker([report.lat, report.lng], {
+                        radius: 8,
+                        color: color,
+                        fillColor: color,
+                        fillOpacity: 0.8
+                    }).addTo(map);
+
+                    let popupContent = `
+                        <b>Status:</b> ${report.status}<br>
+                        <b>Review:</b> ${report.review}<br>
+                        <b>User:</b> ${report.user}<br>
+                        <b>Email:</b> ${report.email}<br>
+                        <b>Address:</b> ${report.address}
+                    `;
+
+                    if (report.photo_url) {
+                        popupContent += `
+                            <br><br>
+                            <img src="${report.photo_url}" alt="Report Photo" width="100" style="cursor: pointer; border-radius: 8px; box-shadow: 0 0 5px #333;" onclick="openLightbox('${report.photo_url}')">
+                        `;
+                    }
+
+                    marker.bindPopup(popupContent);
+                });
+            });
+
+        // 4. Lightbox functions
+        function openLightbox(url) {
+            document.getElementById('lightbox-img').src = url;
+            document.getElementById('lightbox').style.display = 'block';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.getElementById('lightbox-img').src = '';
+        }
+    </script>
+</body>
+</html> {% endcomment %}

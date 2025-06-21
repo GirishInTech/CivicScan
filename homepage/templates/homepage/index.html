@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrilliantBengaluru - Let's Build a Cleaner, Smarter City Together</title>
+    <link rel="stylesheet" href="{% static 'homepage/style.css' %}">
+    <script src="{% static 'homepage/script.js' %}"></script>
+ 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+
+
+    
+    {% block content %}
+    
+
+
+
+
+    {% comment %} <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-city"></i>
+                <span>BrilliantBengaluru</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'my_reports' %}" class="nav-link">My Reports</a>
+                <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                {% else %}
+                <a href="{% url 'signup' %}" class="nav-link">Sign Up</a>
+                <a href="{% url 'login' %}" class="nav-link">Login</a>
+                {% endif %}
+
+                <a href="{% url 'submit_report' %}" class="nav-link">Report</a>
+                <a href="#feedback" class="nav-link">Feedback</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+                {% endif %}
+                <div class="language-selector">
+                    <i class="fas fa-globe"></i>
+                    <select id="languageSelect">
+                        <option value="en">EN</option>
+                        <option value="kn">ಕನ್ನಡ</option>
+                        <option value="hi">हिंदी</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav> {% endcomment %}
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-icon">🏙️</div>
+                <h1 class="hero-title">BrilliantBengaluru</h1>
+                <p class="hero-subtitle">Let's Build a Cleaner, Smarter City Together</p>
+                <div class="hero-buttons">
+                    <a href="{% url 'submit_report' %}" class="btn btn-primary">
+                        <i class="fas fa-camera"></i>
+                        Report Issue
+                    </a>
+
+                    
+                    <button class="btn btn-secondary" onclick="scrollToSection('about')">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">🧹</div>
+                <h2>The Problem:</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">20%</div>
+                    <div class="stat-text">Rise in waste issues post-festivals</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-text">Users unaware of civic complaint options</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">💡</div>
+                <h2>Our Solution:</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3>Upload Images</h3>
+                    <p>Capture and upload images of dirty spots instantly</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Feedback System</h3>
+                    <p>Share your thoughts and suggestions with the community</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Tracking</h3>
+                    <p>Smart AI identifies and tracks problem zones automatically</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How You Can Help Section -->
+    <section id="help" class="help-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">🙌</div>
+                <h2>How You Can Help:</h2>
+            </div>
+            <div class="help-grid">
+                <div class="help-item">
+                    <div class="help-icon">📸</div>
+                    <div class="help-content">
+                        <h3>Report Areas</h3>
+                        <p>Take photos of clean and dirty areas in your neighborhood</p>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <div class="help-icon">📝</div>
+                    <div class="help-content">
+                        <h3>Share Feedback</h3>
+                        <p>Voice your opinions and provide valuable feedback</p>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <div class="help-icon">📍</div>
+                    <div class="help-content">
+                        <h3>Locate Problems</h3>
+                        <p>Help us pinpoint public issues that need attention</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Insights Section -->
+    <section id="insights" class="insights-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <h2>Smart Insights:</h2>
+            </div>
+            <div class="insights-card">
+                <div class="insight-highlight">
+                    <i class="fas fa-chart-line"></i>
+                    <span>"Koramangala had 15 reports this week!"</span>
+                </div>
+                <div class="insights-grid">
+                    <div class="insight-item">
+                        <div class="insight-number">127</div>
+                        <div class="insight-label">Issues Reported</div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-number">89</div>
+                        <div class="insight-label">Issues Resolved</div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-number">1.2K</div>
+                        <div class="insight-label">Active Users</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <div class="section-icon">📢</div>
+                <h2>Join the Movement</h2>
+                <p>Be part of the change Bengaluru needs. Every report makes a difference!</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large">
+                        <i class="fas fa-camera"></i>
+                        Start Reporting
+                    </button>
+                    <button class="btn btn-outline btn-large">
+                        <i class="fas fa-hands-helping"></i>
+                        Volunteer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Report Modal -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Report an Issue</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <div class="form-group">
+                        <label for="issueType">Issue Type:</label>
+                        <select id="issueType" required>
+                            <option value="">Select Issue Type</option>
+                            <option value="waste">Waste Management</option>
+                            <option value="roads">Road Issues</option>
+                            <option value="water">Water Problems</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location" placeholder="Enter location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" placeholder="Describe the issue..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Upload Photo:</label>
+                        <input type="file" id="photo" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Report</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-city"></i>
+                    <span>BrillianBengaluru</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#contact">Contact</a>
+                    <a href="#credits">Credits</a>
+                    <a href="#privacy">Privacy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BrillianBengaluru. Making Bengaluru brilliant, one report at a time.</p>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+    {% comment %} <script src="script.js"></script> {% endcomment %}
+</body>
+</html>

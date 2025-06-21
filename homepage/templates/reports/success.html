@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="thank-you-section-bg" style="text-align: center; margin-top: 60px;">
+    <h2 style="font-size:50px">✅ Thank you for your submission!</h2>
+    {% comment %} <p>Your Report ID is: <strong>{{ report_id }}</strong></p> {% endcomment %}
+
+    <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
+      <!-- Submit Another Report Button -->
+      <div class="relative group">
+        <a href="{% url 'submit_report' %}"
+           class="relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
+          
+          <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+
+          <span class="relative z-10 block px-6 py-3 rounded-xl bg-gray-950">
+            <div class="relative z-10 flex items-center space-x-2">
+              <span class="transition-all duration-500 group-hover:translate-x-1">Submit Another Report</span>
+              <svg class="w-6 h-6 transition-transform duration-500 group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" />
+              </svg>
+            </div>
+          </span>
+        </a>
+      </div>
+
+      <!-- Go to Dashboard Button -->
+      <div class="relative group">
+        <a href="{% url 'home' %}"
+           class="relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
+          
+          <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+
+          <span class="relative z-10 block px-6 py-3 rounded-xl bg-gray-950">
+            <div class="relative z-10 flex items-center space-x-2">
+              <span class="transition-all duration-500 group-hover:translate-x-1">Go to Homepage</span>
+              <svg class="w-6 h-6 transition-transform duration-500 group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" />
+              </svg>
+            </div>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    {% comment %} <div style="margin-top: 30px;">
+        <a href="{% url 'submit_report' %}" class="nav-link" style="margin-right: 20px; font-weight: bold;">Submit Another Report</a>
+        <a href="{% url 'dashboard' %}" class="nav-link" style="font-weight: bold;">Go to Dashboard</a>
+    </div> {% endcomment %}
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+{% comment %} {% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit a Report</title>
+    <link rel="stylesheet" href="{% static 'homepage/style.css' %}">
+</head>
+<body>
+
+<h2>Thank you for your report!</h2>
+<p>Your submission has been received.</p>
+<p>Your Report ID is: {{ report_id }}</p>
+
+</body>
+</html>
+{% endblock %} {% endcomment %}

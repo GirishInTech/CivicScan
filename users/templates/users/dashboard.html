@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<div class="dashboard-container">
+    <h2>Welcome, {{ request.user.first_name }}</h2>
+    <p><strong>Username:</strong> {{ request.user.username }}</p>
+    <p><strong>Email:</strong> {{ request.user.email }}</p>
+    <p><strong>Phone:</strong> {{ profile.phone_number }}</p>
+
+    <h3>Your Reports</h3>
+    {% if reports %}  
+      <ul>
+        {% for report in reports %}
+          <li>{{ report.status }} at {{ report.location }} on {{ report.submitted_at }} </li>
+          <br>
+          {% if report.photo %}
+          <a href="{{ report.photo.url }}" target="_blank">
+            <img src="{{ report.photo.url }}" alt="Report Photo" class="report-photo">
+          </a>
+          {% else %}
+            <em>No photo provided</em>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="no-reports">You haven't submitted any reports yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Reports</title>
+    <link rel="stylesheet" href="{% static 'homepage/style.css' %}">
+</head>
+<body>
+  <div class="my-reports-container">
+    {% block content %}
+    <h2 class="reports-heading">My Submitted Reports</h2>
+
+    {% if reports %}
+      <ul class="report-list">
+        {% for report in reports %}
+          <li class="report-item">
+            <p><strong>Status:</strong> {{ report.status|title }}</p>
+            <p><strong>Location:</strong> {{ report.location }}</p>
+            <p><strong>Review:</strong> {{ report.review }}</p>
+            <p><strong>Submitted:</strong> {{ report.submitted_at|date:"d M Y, H:i" }}</p>
+
+            {% if report.photo and report.photo.url %}
+            <a href="{{ report.photo.url }}" target="_blank">
+              <img src="{{ report.photo.url }}" alt="Report Image" class="report-img" />
+            </a>
+            {% else %}
+            <p><i>No image uploaded.</i></p>
+            {% endif %}
+
+          </li>
+          <hr class="report-divider">
+        {% endfor %}
+      </ul>
+
+      <div class="pagination">
+        <span class="step-links">
+          {% if reports.has_previous %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ reports.previous_page_number }}">Previous</a>
+          {% endif %}
+
+          <span class="current-page">
+            Page {{ reports.number }} of {{ reports.paginator.num_pages }}
+          </span>
+
+          {% if reports.has_next %}
+            <a href="?page={{ reports.next_page_number }}">Next</a>
+            <a href="?page={{ reports.paginator.num_pages }}">Last &raquo;</a>
+          {% endif %}
+        </span>
+      </div>
+
+    {% else %}
+      <p class="no-report-text">You haven't submitted any reports yet.</p>
+    {% endif %}
+    {% endblock %}
+  </div>
+</body>
+
+</html>
+

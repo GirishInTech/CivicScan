@@ -1,0 +1,48 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit a Report</title>
+    <link rel="stylesheet" href="{% static 'homepage/style.css' %}">
+</head>
+<body>
+
+<div class="report-form-container">
+    <h2>Report a Place</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <label for="photo">Upload Photo or click photo:</label>
+        <input type="file" name="photo" accept="image/*" capture="environment">
+
+        <label for="status">Is the place clean or dirty?</label>
+        <select name="status" required>
+            <option value="clean">Clean</option>
+            <option value="dirty">Dirty</option>
+        </select>
+
+        <label for="location">Location (auto-filled if enabled):</label>
+        <input type="text" name="location" id="location" required>
+
+        <label for="review">Why is the place clean/dirty? Suggestions?</label>
+        <textarea name="review" rows="4" required></textarea>
+
+        <button type="submit">Submit Report</button>
+    </form>
+</div>
+
+<script>
+    navigator.geolocation.getCurrentPosition(function(position) {
+        const coords = `${position.coords.latitude}, ${position.coords.longitude}`;
+        document.getElementById('location').value = coords;
+    });
+</script>
+
+</body>
+</html>
+{% endblock %}
