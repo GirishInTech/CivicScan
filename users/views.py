@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from flask_login import login_required
+from django.contrib.auth.decorators import login_required
 
 
 from .forms import SignupForm
