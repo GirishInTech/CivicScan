@@ -21,7 +21,7 @@
         {% csrf_token %}
         
         <label for="photo">Upload Photo or click photo:</label>
-        <input type="file" name="photo" accept="image/*" capture="environment">
+        <input type="file" name="photo" accept="image/*" capture="environment" required>
 
         <label for="status">Is the place clean or dirty?</label>
         <select name="status" required>
