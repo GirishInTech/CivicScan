@@ -1,5 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/script.js' %}"></script>
+
 <br>
 <div class="dashboard-container">
     <h2>Welcome, {{ request.user.first_name }}</h2>
