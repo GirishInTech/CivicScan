@@ -47,12 +47,12 @@
                     <b>Address:</b> ${report.address}
                 `;
 
-                if (report.photo.url) {
+                if (report.photo_url) {
                     popupContent += `
-                        <br><br>
-                        <img src="${report.photo_url}" alt="Report Photo" width="100" style="cursor: pointer; border-radius: 8px; box-shadow: 0 0 5px #333;" onclick="openLightbox('${report.photo_url}')">
-                    `;
+                    <br><br>
+                    <img src="${report.photo_url}" alt="Report Photo" width="100" style="cursor: pointer; border-radius: 8px; box-shadow: 0 0 5px #333;" onclick="openLightbox('${report.photo_url}')">`;
                 }
+
 
                 marker.bindPopup(popupContent);
             });
