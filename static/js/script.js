@@ -388,19 +388,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('BrillianBengaluru website initialized successfully!');
 });
 
-// Service Worker registration (for PWA capabilities)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-                console.log('SW registered: ', registration);
-            })
-            .catch((registrationError) => {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
-}
-
 // Add utility functions
 const utils = {
     // Debounce function for performance
@@ -444,6 +431,5 @@ const utils = {
 
 // Export utils for potential use in other scripts
 window.BrillianBengaluruUtils = utils;
-
 
 

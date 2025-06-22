@@ -62,6 +62,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'BrillianBengaluru.urls'
 
+
 import os  # Make sure this is at the top of your settings.py if not already
 
 TEMPLATES = [
@@ -198,3 +199,5 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
