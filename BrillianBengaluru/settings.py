@@ -28,7 +28,8 @@ SECRET_KEY = 'django-insecure-owyq!#7@^h(3*42+eysd%_c0s$e38h89qt2=-b2!^_vx#g(y58
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['civicscan.onrender.com']
+ALLOWED_HOSTS = ['civicscan.onrender.com', 'localhost', '127.0.0.1']
+
 
 
 

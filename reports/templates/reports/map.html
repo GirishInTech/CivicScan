@@ -47,10 +47,10 @@
                     <b>Address:</b> ${report.address}
                 `;
 
-                if (report.photo_url) {
+                if (report.photo) {
                     popupContent += `
                         <br><br>
-                        <img src="${report.photo_url}" alt="Report Photo" width="100" style="cursor: pointer; border-radius: 8px; box-shadow: 0 0 5px #333;" onclick="openLightbox('${report.photo_url}')">
+                        <img src="${report.photo.url}" alt="Report Photo" width="100" style="cursor: pointer; border-radius: 8px; box-shadow: 0 0 5px #333;" onclick="openLightbox('${report.photo.url}')">
                     `;
                 }
 
