@@ -2,7 +2,7 @@ services:
   - type: web
     name: civic-scan
     runtime: python
-    buildCommand: "pip install -r requirements.txt"
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
     startCommand: "gunicorn BrillianBengaluru.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
