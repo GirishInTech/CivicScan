@@ -1,2 +1,5 @@
 # Ignore SQLite database (you’re using PostgreSQL)
 db.sqlite3
+
+# Environment variables file
+.env
