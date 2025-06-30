@@ -11,7 +11,7 @@ services:
         value: 3.12.4
       - key: CLOUDINARY_URL
         value: cloudinary://677469849331989:7nRRd5EH4Hf9oOXH1RlTlAXLgOY@dgqm61eqb
-      - key: django-insecure-owyq!#7@^h(3*42+eysd%_c0s$e38h89qt2=-b2!^_vx#g(y58
-        value: your-django-secret-key-here
+      - key: SECRET_KEY 
+        value: django-insecure-owyq!#7@^h(3*42+eysd%_c0s$e38h89qt2=-b2!^_vx#g(y58
       - key: ALLOWED_HOSTS
         value: civic-scan.onrender.com

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrillianBengaluru</title>
+    <title>civicscan</title>
 
     <!-- CSS & JS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -31,10 +31,13 @@
         <!-- Navigation -->
         <nav class="navbar">
             <div class="container">
-                <div class="nav-brand">
-                    <i class="fas fa-city"></i>
-                    <span>BrilliantBengaluru</span>
-                </div>
+                <a href="{% url 'home' %}" class="nav-link">
+                    <div class="nav-brand">
+                        <i class="fas fa-city"></i>
+                        <span>BrilliantBengaluru</span>
+                    </div>
+                </a>
+
 
 
                 <div class="nav-toggle" id="navToggle">
