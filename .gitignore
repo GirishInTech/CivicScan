@@ -1,0 +1,2 @@
+# Ignore SQLite database (you’re using PostgreSQL)
+db.sqlite3
