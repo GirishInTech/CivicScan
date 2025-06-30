@@ -1,6 +1,6 @@
 {
-  "name": "Brillian Bengaluru",
-  "short_name": "Brillian",
+  "name": "civicscan",
+  "short_name": "civicscan",
   "description": "A civic engagement platform to report public cleanliness issues in Bengaluru.",
   "start_url": "/",
   "display": "standalone",
