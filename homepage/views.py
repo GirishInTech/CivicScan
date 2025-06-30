@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def home(request):
-    return render(request, 'homepage/index.html')  # ✅ match this path
+    return render(request, 'homepage/index.html')  # ✅ m atch this path
 
 
 def health_check(request):
@@ -19,4 +19,5 @@ def custom_logout(request):
     logout(request)
     return redirect('home')  # This 'home' must match your homepage URL name
 
-
+def offline(request):
+    return render(request, 'homepage/offline.html')

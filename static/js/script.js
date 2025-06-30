@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
+// hamburger.addEventListener('click', () => {
+//     navMenu.classList.toggle('active');
+//     hamburger.classList.toggle('active');
+// });
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(link => {
@@ -87,20 +87,41 @@ function closeReportModal() {
 }
 
 // Event listeners for modal
-document.querySelectorAll('button:contains("Report Issue"), button:contains("Start Reporting")').forEach(button => {
-    if (button.textContent.includes('Report') || button.textContent.includes('Start Reporting')) {
-        button.addEventListener('click', openReportModal);
-    }
+document.querySelectorAll('button').forEach(button => {
+  const text = button.textContent.trim();
+  if (text.includes("Report Issue") || text.includes("Start Reporting")) {
+    button.addEventListener("click", openReportModal);
+  }
 });
+
+// document.querySelectorAll('button:contains("Report Issue"), button:contains("Start Reporting")').forEach(button => {
+//     if (button.textContent.includes('Report') || button.textContent.includes('Start Reporting')) {
+//         button.addEventListener('click', openReportModal);
+//     }
+// });
 
 // Close modal when clicking the X or outside
-document.querySelector('.close').addEventListener('click', closeReportModal);
+const closeBtn = document.querySelector('.close');
+if (closeBtn) {
+    closeBtn.addEventListener('click', closeReportModal);
+}
 
-reportModal.addEventListener('click', (e) => {
-    if (e.target === reportModal) {
-        closeReportModal();
-    }
-});
+// document.querySelector('.close').addEventListener('click', closeReportModal);
+// const reportModal = document.getElementById('reportModal');
+
+if (reportModal) {
+    reportModal.addEventListener('click', (e) => {
+        if (e.target === reportModal) {
+            closeReportModal();
+        }
+    });
+}
+
+// reportModal.addEventListener('click', (e) => {
+//     if (e.target === reportModal) {
+//         closeReportModal();
+//     }
+// });
 
 // Close modal with Escape key
 document.addEventListener('keydown', (e) => {
@@ -110,23 +131,40 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Form submission
-reportForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+// const reportForm = document.getElementById('reportForm');
+if (reportForm) {
+    reportForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(reportForm);
+        const issueType = formData.get('issueType') || document.getElementById('issueType').value;
+        const location = formData.get('location') || document.getElementById('location').value;
+        const description = formData.get('description') || document.getElementById('description').value;
+        const photo = document.getElementById('photo').files[0];
+
+        showNotification('Report submitted successfully! Thank you for helping make Bengaluru better.', 'success');
+        reportForm.reset();
+        closeReportModal();
+    });
+}
+
+// reportForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
     
-    // Get form data
-    const formData = new FormData(reportForm);
-    const issueType = formData.get('issueType') || document.getElementById('issueType').value;
-    const location = formData.get('location') || document.getElementById('location').value;
-    const description = formData.get('description') || document.getElementById('description').value;
-    const photo = document.getElementById('photo').files[0];
+//     // Get form data
+//     const formData = new FormData(reportForm);
+//     const issueType = formData.get('issueType') || document.getElementById('issueType').value;
+//     const location = formData.get('location') || document.getElementById('location').value;
+//     const description = formData.get('description') || document.getElementById('description').value;
+//     const photo = document.getElementById('photo').files[0];
     
-    // Simulate form submission
-    showNotification('Report submitted successfully! Thank you for helping make Bengaluru better.', 'success');
+//     // Simulate form submission
+//     showNotification('Report submitted successfully! Thank you for helping make Bengaluru better.', 'success');
     
-    // Reset form and close modal
-    reportForm.reset();
-    closeReportModal();
-});
+//     // Reset form and close modal
+//     reportForm.reset();
+//     closeReportModal();
+// });
 
 // Notification system
 function showNotification(message, type = 'info') {
@@ -220,11 +258,20 @@ function getNotificationColor(type) {
 }
 
 // Language switching
-languageSelect.addEventListener('change', (e) => {
-    const selectedLanguage = e.target.value;
-    switchLanguage(selectedLanguage);
-    showNotification(`Language switched to ${getLanguageName(selectedLanguage)}`, 'info');
-});
+// const languageSelect = document.getElementById('languageSelect');
+if (languageSelect) {
+    languageSelect.addEventListener('change', (e) => {
+        const selectedLanguage = e.target.value;
+        switchLanguage(selectedLanguage);
+        showNotification(`Language switched to ${getLanguageName(selectedLanguage)}`, 'info');
+    });
+}
+
+// languageSelect.addEventListener('change', (e) => {
+//     const selectedLanguage = e.target.value;
+//     switchLanguage(selectedLanguage);
+//     showNotification(`Language switched to ${getLanguageName(selectedLanguage)}`, 'info');
+// });
 
 function switchLanguage(language) {
     // This is a simplified language switching function

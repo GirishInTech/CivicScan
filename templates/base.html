@@ -6,12 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrillianBengaluru</title>
+
+    <!-- CSS & JS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/script.js' %}"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- PWA Manifest -->
     <link rel="manifest" href="{% static 'manifest.json' %}">
-    <meta name="theme-color" content="#ffffff">
+
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'icons/icon-96.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'icons/icon-180.png' %}">
 </head>
+
 
 <body>
     <header>
@@ -64,14 +77,14 @@
         <p>© 2025 BrillianBengaluru</p>
     </footer>
 
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register("{% static 'serviceworker.js' %}")
+      .then(reg => console.log('✅ Service Worker registered', reg))
+      .catch(err => console.error('❌ Service Worker failed', err));
+  }
+</script>
 
-    <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register("{% static 'serviceworker.js' %}")
-        .then(reg => console.log("Service Worker Registered", reg))
-        .catch(err => console.error("Service Worker Failed", err));
-    }
-    </script>
 
 </body>
 </html>
