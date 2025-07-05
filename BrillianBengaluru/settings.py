@@ -205,3 +205,10 @@ LOGGING = {
 }
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Automatically bind to PORT if defined (important for Render)
+import os
+PORT = os.getenv('PORT')
+if PORT:
+    import sys
+    sys.argv += ['runserver', f'0.0.0.0:{PORT}']
