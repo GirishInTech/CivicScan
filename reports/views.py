@@ -7,6 +7,8 @@ from .models import Report
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut
 import time
+from django.http import JsonResponse
+from .models import Hotspot
 
 
 # helper function for reverse geocoding with retry to avoid timeouts
@@ -145,3 +147,17 @@ def report_data_json(request):
 
 def report_map_view(request):
     return render(request, 'reports/map.html')
+
+def hotspot_data(request):
+    hotspots = Hotspot.objects.all()
+    data = []
+
+    for hotspot in hotspots:
+        data.append({
+            'lat': hotspot.latitude,
+            'lng': hotspot.longitude,
+            'report_count': hotspot.report_count,
+            'address': hotspot.address,
+        })
+
+    return JsonResponse(data, safe=False)

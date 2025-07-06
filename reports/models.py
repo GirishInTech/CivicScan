@@ -22,3 +22,15 @@ class Report(models.Model):
 
     def __str__(self):
         return f"{self.status.title()} report at {self.location}"
+
+
+class Hotspot(models.Model):
+    cluster_id = models.IntegerField()
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    report_count = models.IntegerField()
+    address = models.CharField(max_length=500, blank=True, null=True)
+    last_updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Hotspot #{self.cluster_id} - {self.report_count} reports"

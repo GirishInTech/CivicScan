@@ -57,6 +57,26 @@
                 marker.bindPopup(popupContent);
             });
         });
+        // 4. Fetch and render hotspot areas (circle overlays)
+fetch('/reports/hotspots/data/')
+  .then(response => response.json())
+  .then(hotspots => {
+    hotspots.forEach(hotspot => {
+      const circle = L.circle([hotspot.lat, hotspot.lng], {
+        color: 'darkred',
+        fillColor: '#ff5555',
+        fillOpacity: 0.4,
+        radius: 300  // in meters; you can adjust
+      }).addTo(map);
+
+      circle.bindPopup(`
+        🧠 <b>Hotspot Detected!</b><br>
+        📍 <b>Address:</b> ${hotspot.address}<br>
+        🧾 <b>Reports:</b> ${hotspot.report_count}
+      `);
+    });
+  });
+
 
     // 4. Lightbox functions
     function openLightbox(url) {
