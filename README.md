@@ -62,22 +62,47 @@ CivicScan is a Django-based full-stack web application designed to empower citiz
 
  ✅ 5. Backend Optimization
 
+* Machine Learning: scikit-learn (DBSCAN clustering)
 * Media storage via Cloudinary
 * Static files handled with WhiteNoise
 * Render environment variables for security
 * Logs & debugging with logging module
 
+✅ 6. AI-Powered Hotspot Detection
+
+* Clusters multiple "dirty" reports using DBSCAN (scikit-learn)
+* Automatically detects high-density complaint areas
+* Saves hotspot data with location and report count
+* Visualizes hotspots as red circles on the map (Leaflet.js)
+* Helps authorities focus on most affected areas
+
+
 
 
  🧠 Future Enhancements
 
+
 | Feature              | Description                            |
-| -- | -- |
+|----------------------|----------------------------------------|
 | Edit/Delete Reports  | Allow users to manage submissions      |
 | Search by Area       | Address-based filtering for admin map  |
 | Filter by Status     | View only "dirty" or "clean" areas     |
 | Live Map Updates     | Polling or refresh option for new data |
 | AI Hotspot Detection | Predict areas needing urgent action    |
+| Heatmap Layer        | Use heatmaps to show issue density     |
+| Dynamic Hotspot Radius | Adjust circle size by report count   |
+| Hotspot Time Filter  | Show hotspots only from past 7 days    |
+
+
+
+
+🖼️ Hotspot Visualization Example
+
+> CivicScan uses AI (DBSCAN clustering) to find high-frequency cleanliness issues and shows them as red heat zones on the map:
+
+![Hotspot Detection in Action](static/images/hotspot_demo.gif)
+
+
 
 
 
