@@ -106,15 +106,25 @@ CivicScan aims to encourage community participation in keeping public spaces cle
 ## 📂 Project Structure (Simplified)
 
 BrillianBengaluru/
+
 ├── homepage/ Static content & landing
+
 ├── users/ Auth & profile
+
 ├── reports/ Report submission & map
+
 ├── templates/ Jinja templates
+
 ├── static/ Custom CSS, JS, icons
+
 ├── media/ (Optional) local fallback
+
 ├── manage.py
+
 ├── requirements.txt
+
 ├── render.yaml Render deployment config
+
 ├── .env (not committed)
 
 
