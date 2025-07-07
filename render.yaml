@@ -8,7 +8,7 @@ services:
       - key: DJANGO_SETTINGS_MODULE
         value: BrillianBengaluru.settings
       - key: PYTHON_VERSION
-        value: 3.12.4
+        value: 3.12.4 
       - key: CLOUDINARY_URL
         value: cloudinary://677469849331989:7nRRd5EH4Hf9oOXH1RlTlAXLgOY@dgqm61eqb
       - key: SECRET_KEY 

@@ -64,7 +64,6 @@ def submit_report(request):
             print(report.photo.url)  # 👈 this will show us where it got uploaded
             # ✅ Decide which success page to show
             if request.user.is_authenticated:
-                
                 return render(request, 'reports/success.html', {'report_id': report.id})
             else:
                 return render(request, 'reports/anon_success.html', {'report_id': report.id})

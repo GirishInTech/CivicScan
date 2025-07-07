@@ -212,3 +212,19 @@ PORT = os.getenv('PORT')
 if PORT:
     import sys
     sys.argv += ['runserver', f'0.0.0.0:{PORT}']
+
+
+import logging
+
+LOGGING = {
+    "version": 1,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
+    },
+}
