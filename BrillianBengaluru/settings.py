@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
-from decouple import config
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -31,8 +30,8 @@ SECRET_KEY = 'django-insecure-owyq!#7@^h(3*42+eysd%_c0s$e38h89qt2=-b2!^_vx#g(y58
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['civicscan.onrender.com', 'localhost', '127.0.0.1']
-
+# ALLOWED_HOSTS = ['civicscan.onrender.com', 'localhost', '127.0.0.1', 'crtqimfvcthmuijcvuwf.supabase.co']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -182,9 +181,9 @@ import os
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# CLOUDINARY_STORAGE = {
-#     'CLOUDINARY_URL': os.getenv('CLOUDINARY_URL')  # Works both locally & on Render
-# }
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': os.getenv('CLOUDINARY_URL')  # Works both locally & on Render
+}
 
 import logging
 import sys

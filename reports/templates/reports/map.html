@@ -5,6 +5,9 @@
 <h2 style="text-align:center; margin-top: 20px;">BrillianBengaluru - Cleanliness Map</h2>
 
 <div id="map" style="height: 90vh; width: 100%; margin-top: 10px;"></div>
+<div id="hotspot-status" style="text-align:center; margin: 10px; padding: 10px; background: #f0f0f0; border-radius: 5px;">
+    <strong>Loading hotspots...</strong>
+</div>
 
 <!-- Lightbox HTML -->
 <div id="lightbox" onclick="closeLightbox()">
@@ -56,26 +59,61 @@
 
                 marker.bindPopup(popupContent);
             });
+        })
+        .catch(error => {
+            console.error('Error fetching report data:', error);
         });
-        // 4. Fetch and render hotspot areas (circle overlays)
-fetch('/reports/hotspots/data/')
-  .then(response => response.json())
-  .then(hotspots => {
-    hotspots.forEach(hotspot => {
-      const circle = L.circle([hotspot.lat, hotspot.lng], {
-        color: 'darkred',
-        fillColor: '#ff5555',
-        fillOpacity: 0.4,
-        radius: 300  // in meters; you can adjust
-      }).addTo(map);
 
-      circle.bindPopup(`
-        🧠 <b>Hotspot Detected!</b><br>
-        📍 <b>Address:</b> ${hotspot.address}<br>
-        🧾 <b>Reports:</b> ${hotspot.report_count}
-      `);
-    });
-  });
+    // 4. Fetch and render hotspot areas (circle overlays)
+    fetch('/reports/hotspots/data/')
+        .then(response => {
+            console.log('Hotspot response status:', response.status);
+            return response.json();
+        })
+        .then(hotspots => {
+            console.log('Hotspots data received:', hotspots);
+            console.log('Number of hotspots:', hotspots.length);
+            
+            // Update status message
+            const statusDiv = document.getElementById('hotspot-status');
+            if (hotspots.length > 0) {
+                statusDiv.innerHTML = `<strong>✅ ${hotspots.length} hotspot(s) loaded successfully!</strong>`;
+                statusDiv.style.background = '#d4edda';
+                statusDiv.style.color = '#155724';
+            } else {
+                statusDiv.innerHTML = `<strong>⚠️ No hotspots found. Run the DBSCAN command first.</strong>`;
+                statusDiv.style.background = '#fff3cd';
+                statusDiv.style.color = '#856404';
+            }
+            
+            hotspots.forEach((hotspot, index) => {
+                console.log(`Creating hotspot ${index}:`, hotspot);
+                
+                const circle = L.circle([hotspot.lat, hotspot.lng], {
+                    color: 'darkred',
+                    fillColor: '#ff5555',
+                    fillOpacity: 0.6,  // Increased opacity for better visibility
+                    radius: 500,       // Increased radius for better visibility
+                    weight: 3          // Thicker border
+                }).addTo(map);
+
+                circle.bindPopup(`
+                    🧠 <b>Hotspot Detected!</b><br>
+                    📍 <b>Address:</b> ${hotspot.address}<br>
+                    🧾 <b>Reports:</b> ${hotspot.report_count}<br>
+                    📍 <b>Coordinates:</b> ${hotspot.lat}, ${hotspot.lng}
+                `);
+                
+                console.log(`Hotspot ${index} added to map at coordinates:`, hotspot.lat, hotspot.lng);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching hotspot data:', error);
+            const statusDiv = document.getElementById('hotspot-status');
+            statusDiv.innerHTML = `<strong>❌ Error loading hotspots: ${error.message}</strong>`;
+            statusDiv.style.background = '#f8d7da';
+            statusDiv.style.color = '#721c24';
+        });
 
 
     // 4. Lightbox functions

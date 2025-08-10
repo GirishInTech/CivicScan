@@ -10,6 +10,6 @@ urlpatterns = [
     path('data/', views.report_data_json, name='report_data_json'),
     path('map/', views.report_map_view, name='report_map'),
     path('hotspots/data/', hotspot_data, name='hotspot_data'),
-    
+    path('test-hotspots/', lambda request: render(request, 'test_hotspots.html'), name='test_hotspots'),
 ]
 

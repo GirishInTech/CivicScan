@@ -1,34 +1,101 @@
-// DOM Elements
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-const reportModal = document.getElementById('reportModal');
-const reportForm = document.getElementById('reportForm');
-const languageSelect = document.getElementById('languageSelect');
+// ===== MODERN DOM ELEMENTS =====
+let navToggle, navMenu, reportModal, reportForm, languageSelect, navbar;
 
-// Navigation functionality
-document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.getElementById('navToggle');
-    const menu = document.getElementById('navMenu');
-
-    if (toggle && menu) {
-        toggle.addEventListener('click', function () {
-            menu.classList.toggle('active');
-        });
-    }
-});
-
-// hamburger.addEventListener('click', () => {
-//     navMenu.classList.toggle('active');
-//     hamburger.classList.toggle('active');
-// });
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
+// Wait for DOM to be ready before getting elements
+document.addEventListener('DOMContentLoaded', function() {
+    navToggle = document.getElementById('navToggle');
+    navMenu = document.getElementById('navMenu');
+    reportModal = document.getElementById('reportModal');
+    reportForm = document.getElementById('reportForm');
+    languageSelect = document.getElementById('languageSelect');
+    navbar = document.querySelector('.navbar');
+    
+    console.log('DOM Elements loaded:', {
+        navToggle: !!navToggle,
+        navMenu: !!navMenu,
+        reportModal: !!reportModal,
+        reportForm: !!reportForm,
+        languageSelect: !!languageSelect,
+        navbar: !!navbar
     });
 });
+
+// ===== MODERN NAVIGATION FUNCTIONALITY =====
+document.addEventListener('DOMContentLoaded', function () {
+    // Initialize after DOM elements are loaded
+    setTimeout(() => {
+        initializeNavigation();
+        initializeScrollAnimations();
+        initializeParallaxEffects();
+        initializeCounterAnimations();
+        initializeModalFunctionality();
+        initializeFormHandlers();
+        
+        console.log('🚀 BrillianBengaluru - Modern UI initialized successfully!');
+    }, 100);
+});
+
+function initializeNavigation() {
+    console.log('Initializing navigation...'); // Debug log
+    console.log('navToggle:', navToggle); // Debug log
+    console.log('navMenu:', navMenu); // Debug log
+    
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Mobile menu toggle clicked'); // Debug log
+            console.log('navToggle classes before:', navToggle.classList.toString()); // Debug log
+            console.log('navMenu classes before:', navMenu.classList.toString()); // Debug log
+            
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            console.log('navToggle classes after:', navToggle.classList.toString()); // Debug log
+            console.log('navMenu classes after:', navMenu.classList.toString()); // Debug log
+            
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+    } else {
+        console.error('Navigation elements not found!'); // Debug log
+    }
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Fallback: Add click handler to document to close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navMenu && navMenu.classList.contains('active') && 
+            !navMenu.contains(e.target) && 
+            !navToggle.contains(e.target)) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Handle navbar scroll effect
+    window.addEventListener('scroll', handleNavbarScroll);
+}
+
+// Mobile menu functionality is now handled in initializeNavigation()
 
 // Smooth scrolling function
 function scrollToSection(sectionId) {
@@ -63,108 +130,155 @@ function updateActiveNavLink() {
     });
 }
 
-// Navbar scroll effect
+// ===== MODERN SCROLL ANIMATIONS =====
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+            }
+        });
+    }, observerOptions);
+    
+    // Add animation classes to elements
+    const animateElements = document.querySelectorAll('.feature-card, .stat-card, .help-item, .insight-item, .section-header');
+    animateElements.forEach((el, index) => {
+        el.classList.add('animate-on-scroll');
+        
+        // Add staggered animation delays
+        if (index % 2 === 0) {
+            el.classList.add('animate-left');
+        } else {
+            el.classList.add('animate-right');
+        }
+        
+        observer.observe(el);
+    });
+}
+
+// ===== MODERN NAVBAR SCROLL EFFECT =====
 function handleNavbarScroll() {
-    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+        navbar.classList.add('scrolled');
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = 'none';
+        navbar.classList.remove('scrolled');
     }
 }
 
-// Modal functionality
-function openReportModal() {
-    reportModal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeReportModal() {
-    reportModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-// Event listeners for modal
-document.querySelectorAll('button').forEach(button => {
-  const text = button.textContent.trim();
-  if (text.includes("Report Issue") || text.includes("Start Reporting")) {
-    button.addEventListener("click", openReportModal);
-  }
-});
-
-// document.querySelectorAll('button:contains("Report Issue"), button:contains("Start Reporting")').forEach(button => {
-//     if (button.textContent.includes('Report') || button.textContent.includes('Start Reporting')) {
-//         button.addEventListener('click', openReportModal);
-//     }
-// });
-
-// Close modal when clicking the X or outside
-const closeBtn = document.querySelector('.close');
-if (closeBtn) {
-    closeBtn.addEventListener('click', closeReportModal);
-}
-
-// document.querySelector('.close').addEventListener('click', closeReportModal);
-// const reportModal = document.getElementById('reportModal');
-
-if (reportModal) {
+// ===== MODERN MODAL FUNCTIONALITY =====
+function initializeModalFunctionality() {
+    if (!reportModal) return;
+    
+    // Add click handlers for all report buttons
+    document.addEventListener('click', (e) => {
+        const target = e.target.closest('button');
+        if (target && (target.textContent.includes('Report') || target.textContent.includes('Start Reporting'))) {
+            openReportModal();
+        }
+    });
+    
+    // Close modal when clicking outside
     reportModal.addEventListener('click', (e) => {
         if (e.target === reportModal) {
             closeReportModal();
         }
     });
-}
-
-// reportModal.addEventListener('click', (e) => {
-//     if (e.target === reportModal) {
-//         closeReportModal();
-//     }
-// });
-
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && reportModal.style.display === 'block') {
-        closeReportModal();
-    }
-});
-
-// Form submission
-// const reportForm = document.getElementById('reportForm');
-if (reportForm) {
-    reportForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(reportForm);
-        const issueType = formData.get('issueType') || document.getElementById('issueType').value;
-        const location = formData.get('location') || document.getElementById('location').value;
-        const description = formData.get('description') || document.getElementById('description').value;
-        const photo = document.getElementById('photo').files[0];
-
-        showNotification('Report submitted successfully! Thank you for helping make Bengaluru better.', 'success');
-        reportForm.reset();
-        closeReportModal();
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && reportModal.style.display === 'block') {
+            closeReportModal();
+        }
     });
 }
 
-// reportForm.addEventListener('submit', (e) => {
-//     e.preventDefault();
+function openReportModal() {
+    if (!reportModal) return;
+    reportModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
     
-//     // Get form data
-//     const formData = new FormData(reportForm);
-//     const issueType = formData.get('issueType') || document.getElementById('issueType').value;
-//     const location = formData.get('location') || document.getElementById('location').value;
-//     const description = formData.get('description') || document.getElementById('description').value;
-//     const photo = document.getElementById('photo').files[0];
+    // Add entrance animation
+    setTimeout(() => {
+        reportModal.style.opacity = '1';
+        reportModal.querySelector('.modal-content').style.transform = 'translateY(0) scale(1)';
+    }, 10);
+}
+
+function closeReportModal() {
+    if (!reportModal) return;
     
-//     // Simulate form submission
-//     showNotification('Report submitted successfully! Thank you for helping make Bengaluru better.', 'success');
+    // Add exit animation
+    reportModal.style.opacity = '0';
+    reportModal.querySelector('.modal-content').style.transform = 'translateY(-50px) scale(0.9)';
     
-//     // Reset form and close modal
-//     reportForm.reset();
-//     closeReportModal();
-// });
+    setTimeout(() => {
+        reportModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }, 300);
+}
+
+// ===== MODERN FORM HANDLERS =====
+function initializeFormHandlers() {
+    if (!reportForm) return;
+    
+    reportForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(reportForm);
+        const issueType = formData.get('issueType') || document.getElementById('issueType')?.value;
+        const location = formData.get('location') || document.getElementById('location')?.value;
+        const description = formData.get('description') || document.getElementById('description')?.value;
+        const photo = document.getElementById('photo')?.files[0];
+        
+        // Show loading state
+        const submitBtn = reportForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+        
+        // Simulate form submission with delay
+        setTimeout(() => {
+            showNotification('Report submitted successfully! Thank you for helping make Bengaluru better.', 'success');
+            reportForm.reset();
+            closeReportModal();
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }, 1500);
+    });
+    
+    // Close modal when clicking the X
+    const closeBtn = document.querySelector('.close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeReportModal);
+    }
+}
+
+// ===== MODERN EVENT LISTENERS =====
+window.addEventListener('scroll', () => {
+    updateActiveNavLink();
+    handleNavbarScroll();
+});
+
+window.addEventListener('resize', () => {
+    // Close mobile menu on resize
+    if (window.innerWidth > 768) {
+        if (navMenu && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
 
 // Notification system
 function showNotification(message, type = 'info') {
@@ -311,15 +425,40 @@ function getLanguageName(code) {
     return names[code] || 'English';
 }
 
-// Parallax effect for hero section
-function handleParallax() {
+// ===== MODERN PARALLAX EFFECTS =====
+function initializeParallaxEffects() {
     const hero = document.querySelector('.hero');
-    const scrolled = window.pageYOffset;
-    const rate = scrolled * -0.5;
+    if (!hero) return;
     
-    if (hero) {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.3;
+        
         hero.style.transform = `translateY(${rate}px)`;
-    }
+    });
+}
+
+// ===== MODERN COUNTER ANIMATIONS =====
+function initializeCounterAnimations() {
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    const statsSection = document.querySelector('.problem-section');
+    const insightsSection = document.querySelector('.insights-section');
+    
+    if (statsSection) observer.observe(statsSection);
+    if (insightsSection) observer.observe(insightsSection);
 }
 
 // Intersection Observer for animations
@@ -404,38 +543,7 @@ function setupCounterAnimation() {
     if (insightsSection) observer.observe(insightsSection);
 }
 
-// Event listeners
-window.addEventListener('scroll', () => {
-    updateActiveNavLink();
-    handleNavbarScroll();
-    handleParallax();
-});
-
-window.addEventListener('resize', () => {
-    // Close mobile menu on resize
-    if (window.innerWidth > 768) {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
-    }
-});
-
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    setupScrollAnimations();
-    setupCounterAnimation();
-    
-    // Add click handlers for all report buttons
-    document.addEventListener('click', (e) => {
-        const target = e.target.closest('button');
-        if (target && (target.textContent.includes('Report') || target.textContent.includes('Start Reporting'))) {
-            openReportModal();
-        }
-    });
-    
-    console.log('BrillianBengaluru website initialized successfully!');
-});
-
-// Add utility functions
+// ===== MODERN UTILITY FUNCTIONS =====
 const utils = {
     // Debounce function for performance
     debounce: (func, wait) => {
@@ -464,19 +572,74 @@ const utils = {
         };
     },
     
-    // Format numbers
+    // Format numbers with animations
     formatNumber: (num) => {
         if (num >= 1000) {
             return (num / 1000).toFixed(1) + 'K';
         }
         return num.toString();
+    },
+    
+    // Smooth scroll to element
+    smoothScrollTo: (element, offset = 80) => {
+        const targetPosition = element.offsetTop - offset;
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    },
+    
+    // Check if element is in viewport
+    isInViewport: (element) => {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
     }
 };
 
+// ===== PERFORMANCE OPTIMIZATIONS =====
+// Use throttled scroll handlers for better performance
+const throttledScrollHandler = utils.throttle(() => {
+    updateActiveNavLink();
+    handleNavbarScroll();
+}, 16); // ~60fps
 
+window.addEventListener('scroll', throttledScrollHandler);
 
+// ===== ACCESSIBILITY IMPROVEMENTS =====
+// Add keyboard navigation support
+document.addEventListener('keydown', (e) => {
+    // Tab navigation for mobile menu
+    if (e.key === 'Tab' && navMenu && navMenu.classList.contains('active')) {
+        const focusableElements = navMenu.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        
+        if (e.shiftKey && document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+        }
+    }
+});
 
-// Export utils for potential use in other scripts
-window.BrillianBengaluruUtils = utils;
+console.log('🎨 Modern UI enhancements loaded successfully!');
+
+// Test function to manually trigger mobile menu
+window.testMobileMenu = function() {
+    console.log('Testing mobile menu...');
+    if (navToggle && navMenu) {
+        navToggle.click();
+        console.log('Mobile menu test completed');
+    } else {
+        console.error('Mobile menu elements not found for testing');
+    }
+};
 
 

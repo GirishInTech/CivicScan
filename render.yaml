@@ -14,6 +14,10 @@ services:
       - key: SECRET_KEY 
         value: django-insecure-owyq!#7@^h(3*42+eysd%_c0s$e38h89qt2=-b2!^_vx#g(y58
       - key: ALLOWED_HOSTS
-        value: civic-scan.onrender.com
+        value: civic-scan.onrender.com,localhost,127.0.0.1,crtqimfvcthmuijcvuwf.supabase.co
       - key: DATABASE_URL
-        value: postgresql://civicscan_db_user:6GH33pfsq6iuCzvZs7DaeqrNqYQxVd4v@dpg-d1hd64emcj7s73dp57tg-a.singapore-postgres.render.com/civicscan_db
+        value: postgresql://postgres:${SUPABASE_DB_PASSWORD}@db.crtqimfvcthmuijcvuwf.supabase.co:5432/postgres
+      - key: DEBUG
+        value: "False"
+      - key: PORT
+        value: "8000"

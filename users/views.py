@@ -23,7 +23,15 @@ def signup(request):
 
 @login_required
 def dashboard(request):
-    user_profile = UserProfile.objects.get(user=request.user)
+    try:
+        user_profile = UserProfile.objects.get(user=request.user)
+    except UserProfile.DoesNotExist:
+        # Create profile if it doesn't exist
+        user_profile = UserProfile.objects.create(
+            user=request.user,
+            phone_number="N/A"
+        )
+    
     user_reports = Report.objects.filter(user=request.user).order_by('-submitted_at')
     
     return render(request, 'users/dashboard.html', {
