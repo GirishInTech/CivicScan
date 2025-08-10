@@ -28,3 +28,5 @@ whitenoise==6.6.0
 psycopg2-binary>=2.9
 dj-database-url
 python-dotenv
+setuptools>=65.0.0
+wheel
