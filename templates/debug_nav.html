@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>🔍 Nav Debug</h2>
+
+<p><strong>Authenticated:</strong> {{ user.is_authenticated }}</p>
+<p><strong>Is Superuser:</strong> {{ user.is_superuser }}</p>
+<p><strong>Username:</strong> {{ user.username }}</p>
+<p><strong>Is Staff:</strong> {{ user.is_staff }}</p>
+
+<hr>
+
+<h3>Nav Decision Logic:</h3>
+{% if user.is_authenticated %}
+    {% if user.is_superuser %}
+        <p style="color:green;">✅ Admin Navbar Should Be Active</p>
+    {% else %}
+        <p style="color:blue;">✅ Normal User Navbar Should Be Active</p>
+    {% endif %}
+{% else %}
+    <p style="color:red;">❌ Guest Navbar Should Be Active</p>
+{% endif %}
+{% endblock %}
