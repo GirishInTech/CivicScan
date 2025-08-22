@@ -1,0 +1,1646 @@
+[
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": [
+                "admin",
+                "logentry"
+            ],
+            "codename": "add_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": [
+                "admin",
+                "logentry"
+            ],
+            "codename": "change_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": [
+                "admin",
+                "logentry"
+            ],
+            "codename": "delete_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": [
+                "admin",
+                "logentry"
+            ],
+            "codename": "view_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can add group",
+            "content_type": [
+                "auth",
+                "group"
+            ],
+            "codename": "add_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can change group",
+            "content_type": [
+                "auth",
+                "group"
+            ],
+            "codename": "change_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can delete group",
+            "content_type": [
+                "auth",
+                "group"
+            ],
+            "codename": "delete_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can view group",
+            "content_type": [
+                "auth",
+                "group"
+            ],
+            "codename": "view_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can add permission",
+            "content_type": [
+                "auth",
+                "permission"
+            ],
+            "codename": "add_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can change permission",
+            "content_type": [
+                "auth",
+                "permission"
+            ],
+            "codename": "change_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": [
+                "auth",
+                "permission"
+            ],
+            "codename": "delete_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can view permission",
+            "content_type": [
+                "auth",
+                "permission"
+            ],
+            "codename": "view_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can add user",
+            "content_type": [
+                "auth",
+                "user"
+            ],
+            "codename": "add_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can change user",
+            "content_type": [
+                "auth",
+                "user"
+            ],
+            "codename": "change_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can delete user",
+            "content_type": [
+                "auth",
+                "user"
+            ],
+            "codename": "delete_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can view user",
+            "content_type": [
+                "auth",
+                "user"
+            ],
+            "codename": "view_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can add content type",
+            "content_type": [
+                "contenttypes",
+                "contenttype"
+            ],
+            "codename": "add_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can change content type",
+            "content_type": [
+                "contenttypes",
+                "contenttype"
+            ],
+            "codename": "change_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": [
+                "contenttypes",
+                "contenttype"
+            ],
+            "codename": "delete_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can view content type",
+            "content_type": [
+                "contenttypes",
+                "contenttype"
+            ],
+            "codename": "view_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can add hotspot",
+            "content_type": [
+                "reports",
+                "hotspot"
+            ],
+            "codename": "add_hotspot"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can change hotspot",
+            "content_type": [
+                "reports",
+                "hotspot"
+            ],
+            "codename": "change_hotspot"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can delete hotspot",
+            "content_type": [
+                "reports",
+                "hotspot"
+            ],
+            "codename": "delete_hotspot"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can view hotspot",
+            "content_type": [
+                "reports",
+                "hotspot"
+            ],
+            "codename": "view_hotspot"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can add report",
+            "content_type": [
+                "reports",
+                "report"
+            ],
+            "codename": "add_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can change report",
+            "content_type": [
+                "reports",
+                "report"
+            ],
+            "codename": "change_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can delete report",
+            "content_type": [
+                "reports",
+                "report"
+            ],
+            "codename": "delete_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can view report",
+            "content_type": [
+                "reports",
+                "report"
+            ],
+            "codename": "view_report"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can add session",
+            "content_type": [
+                "sessions",
+                "session"
+            ],
+            "codename": "add_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can change session",
+            "content_type": [
+                "sessions",
+                "session"
+            ],
+            "codename": "change_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can delete session",
+            "content_type": [
+                "sessions",
+                "session"
+            ],
+            "codename": "delete_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can view session",
+            "content_type": [
+                "sessions",
+                "session"
+            ],
+            "codename": "view_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can add user profile",
+            "content_type": [
+                "users",
+                "userprofile"
+            ],
+            "codename": "add_userprofile"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can change user profile",
+            "content_type": [
+                "users",
+                "userprofile"
+            ],
+            "codename": "change_userprofile"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can delete user profile",
+            "content_type": [
+                "users",
+                "userprofile"
+            ],
+            "codename": "delete_userprofile"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can view user profile",
+            "content_type": [
+                "users",
+                "userprofile"
+            ],
+            "codename": "view_userprofile"
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$So7aU5AJ4B3122eevO2kR4$yhvI3L6TGDsRksUy/JvNbTco3awhBMNQ/ivBEtpqw3c=",
+            "last_login": "2025-07-29T19:20:24.132Z",
+            "is_superuser": false,
+            "username": "giri",
+            "first_name": "Girish Yandigeri",
+            "last_name": "",
+            "email": "girish4936@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-07-29T19:20:13.841Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$870000$e5FiwgjVv7KgDt3zxusOuA$6WqLrUwiCpe6EGpZcL5Zfe9f8AoQEHtko8L9YVKSHhc=",
+            "last_login": "2025-08-08T10:18:05.072Z",
+            "is_superuser": false,
+            "username": "Abhishek77",
+            "first_name": "Abhishek Nalatawad",
+            "last_name": "",
+            "email": "abhia7535@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-08-07T13:33:49.604Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$8dzMMg92wojbcwKk1NHEwJ$Kw34x/FwajsuZ8lZlBPGOjRUwJ+y70VdQJrf9Fqdryw=",
+            "last_login": "2025-08-11T23:04:36.166Z",
+            "is_superuser": false,
+            "username": "aman",
+            "first_name": "aman",
+            "last_name": "",
+            "email": "aman@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-07-29T18:37:11.623Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$QVj45kDBgJ3GNy9glLB9AO$k/db/rcQg9F32VBaRTpWLaeDG9YUC1tsNyxRo6Vvj1s=",
+            "last_login": "2025-08-16T14:53:50.990Z",
+            "is_superuser": false,
+            "username": "girish",
+            "first_name": "Girish Yandigeri",
+            "last_name": "",
+            "email": "girish4936@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-08-09T03:35:44.685Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "fields": {
+            "password": "pbkdf2_sha256$1000000$fGUtFRDcxTJ4EvXyfFHDfL$i8dWeTzT/jrD7ZZMgZ55NOUqwA/lKTizlpqHWKvUBQ4=",
+            "last_login": "2025-08-21T18:02:23.875Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "Girish4936@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2025-05-25T09:17:14Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "app_label": "reports",
+            "model": "hotspot"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "app_label": "auth",
+            "model": "user"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "app_label": "reports",
+            "model": "report"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "app_label": "users",
+            "model": "userprofile"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "10gzqcj2w3wf208ildm45gpjqmvqdgjl",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2hAoYQCX7j0DYZhBqgaS0q6Md9cmXej2v_f-S8S0rTVug5c4kzgLLU6_G6b84LYDuqd26zL3ti4zyl2RBx3y2omfl8P9O6hp1G_NaJIB0CpMydkCxbMmrzCwDwasgly0AzTW6AKaLFGeiNmRRSqIKN4f3Vs4mQ:1uT5oN:8BoPXgHzSfmCHzp_nlMg0xkx7BYVhJQ6xXrWeyiCH_Y",
+            "expire_date": "2025-07-05T21:31:43.020Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "7m5y2mlqnoaad57etekewypl9zsp2p2v",
+        "fields": {
+            "session_data": ".eJxVjM0OwiAQhN-FsyH8BGQ9evcZyLILUjU0Ke3J-O7SpAed4zffzFtE3NYat56XOLG4CG3E6RcmpGdue8MPbPdZ0tzWZUpyV-TRdnmbOb-uh_t3ULHXsVZgchrx6NgSQuHgbWAk8ClAMRlsOHsgbQfOQL4wF-t0UMo4Skp8vikqOHs:1unII3:mcDUOlxBRt5zOqdyB80OLSrvwjGpjhU9WVKZEAOymSU",
+            "expire_date": "2025-08-30T14:53:51.050Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "yp4tf2fiogosu7i6iijash89kr8mhnjw",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1unIRc:TABC6klt8P2cNJx08J7LcpchjsK1rv3FmM9jK5pQoAs",
+            "expire_date": "2025-08-30T15:03:44.353Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "f7qr42mn23uthotrd8kw08yb33p027wy",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1unIV6:021qoONAcx8-7OY9GFLk0U6K5hvxqoaa8GU-5uS66HU",
+            "expire_date": "2025-08-30T15:07:20.461Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "ohnqq9gpfwcad0cj6yyhdu6unuzr73fw",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1unIgq:dAnCAZekyfLMAOFkS-g6GtqU5yMDwFG_EO0g-LkArk4",
+            "expire_date": "2025-08-30T15:19:28.373Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "mvyrnb6i0pgwbc9fv0eba3u45ohxtcct",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1up81V:t02_B7QpjdhH41lOrfSkx-1eD_6kwxNSlaiPMQUYSJU",
+            "expire_date": "2025-09-04T16:20:21.258Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "d6z3b1zywujowfi9geank9kwctcd1z8i",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1up9cF:q4MOB0V9aF_wN1_PphhvrZumUdHmj7RVNh5aoI30Jxs",
+            "expire_date": "2025-09-04T18:02:23.913Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "edw56l99bcjse7lxg0nkor4gsz5z16ss",
+        "fields": {
+            "session_data": ".eJxVjMsOwiAUBf-FtSGF4gVcuu83kPsAqZo2Ke3K-O_apAvdnpk5L5VwW2vaWl7SKOqirDr9boT8yNMO5I7TbdY8T-sykt4VfdCmh1ny83q4fwcVW_3WTCWy8Wyj-IyFLRcp0EPnsAB47oAYmZ07E4XgDQSJUthHiQhkevX-ACIHOTc:1uJ9zY:RnO8tHqobfU0usaIzsVrXYg4oxWFcxQzP3zq26ndVEo",
+            "expire_date": "2025-06-08T11:58:12.700Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "ogv1buss7nfrzajyqyufu5yhzs8fqsyo",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQAP_C2RBaVmQ9eu8byJZdpGogKe3J-HdD0oNeZybzVoH2LYe9yRoWVldl1emXzRSfUrrgB5V71bGWbV1m3RN92KanyvK6He3fIFPLfSt-dMmP1gEP3ohD9hGiQ0pnNxACigGwLl0SiCRMYKIgAyKzBQT1-QLSGjer:1uM52J:VoEAAdfvQohwhS_ix4f_UrPezKdltJ_JY9lxxP6n97k",
+            "expire_date": "2025-06-16T13:17:07.017Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "qg7ck63oqzprm12knqvnl977c3jcyjgd",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQAP_C2RBaVmQ9eu8byJZdpGogKe3J-HdD0oNeZybzVoH2LYe9yRoWVldl1emXzRSfUrrgB5V71bGWbV1m3RN92KanyvK6He3fIFPLfSt-dMmP1gEP3ohD9hGiQ0pnNxACigGwLl0SiCRMYKIgAyKzBQT1-QLSGjer:1uJE2m:-DsK4nUc-MHidkviOf6YUzl_7gJwlUmX6kX4jdsX-90",
+            "expire_date": "2025-06-08T16:17:48.632Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "uhkxigohnxbkgzghz3rpudfc51s5zgki",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2hDaWhhcuvcMZJgZpGogKe3KeHdD0oVu_3vvv1XAfcthb7KGhdVFDer0u0Wkp5QO-IHlXjXVsq1L1F3RB236Vlle18P9O8jYcq8dijXeAlgmsKPzEA04Ggz4NPlRDLqRLBgghjQJRydsaJhTnAXPpD5f07Q4IA:1ugpx8:ItKwj6OLAqOsnnuaqhnYnsY4_5avIXFw4M_R4v7zypI",
+            "expire_date": "2025-08-12T19:25:34.977Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "eigxgcr75ynfn21a6j2zp5ojtyl9qayo",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukJln:xzg0so7GzsIeVGpSUBA9NxZHDqiRCRabgtxR7RM5s8Q",
+            "expire_date": "2025-08-22T09:52:15.672Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "xgmp57oaq6bmufyhji3eo686d8lobe4u",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2hDaWhhcuvcMZJgZpGogKe3KeHdD0oVu_3vvv1XAfcthb7KGhdVFDer0u0Wkp5QO-IHlXjXVsq1L1F3RB236Vlle18P9O8jYcq8dijXeAlgmsKPzEA04Ggz4NPlRDLqRLBgghjQJRydsaJhTnAXPpD5f07Q4IA:1ujtZ6:a48hSOtEtsK4gzcnsHLnk2YiNem-0fkdnEuHZ0vMkr8",
+            "expire_date": "2025-08-21T05:53:24.788Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "j3gckp1f1qy1nxfq04my0icqzrngi2eq",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukJls:WZX0nrLFsLWZ_VKjCp1tt0IdzGe_8kRJTEBm4zYYluk",
+            "expire_date": "2025-08-22T09:52:20.514Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "14xlytaxlr9wsmmk8lnkd93d7sx7gr6l",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukJlv:OwWoXqvS8FWiDgCLDM1WepyLHIIxsawm8As90cDKRS0",
+            "expire_date": "2025-08-22T09:52:23.497Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "z6q7ppqp1eeldg66y4ll5z6e510ufkfk",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukJlv:OwWoXqvS8FWiDgCLDM1WepyLHIIxsawm8As90cDKRS0",
+            "expire_date": "2025-08-22T09:52:23.949Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "yqkjkcwzjdwhf0u90pgfg0trckr2m9x4",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukJlw:WaUV26tHd9peD8xBUV2R4viF7Qy5Xjtc1B-3HE-mHdo",
+            "expire_date": "2025-08-22T09:52:24.030Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "9ionmmamm2avby313qauf2davei04dv4",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukJlw:WaUV26tHd9peD8xBUV2R4viF7Qy5Xjtc1B-3HE-mHdo",
+            "expire_date": "2025-08-22T09:52:24.199Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "96uezd0ec4ygdlcmbstvarwrzspb9y0m",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukJlx:pei_vmTn2AxqJgzeNv9S18L2Srou2NM9y16LYn8SwHc",
+            "expire_date": "2025-08-22T09:52:25.258Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "x4a3ih28e9du3ax2rdbc8fjxhfoc3x4b",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukJlx:pei_vmTn2AxqJgzeNv9S18L2Srou2NM9y16LYn8SwHc",
+            "expire_date": "2025-08-22T09:52:25.641Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "2yj5gs6eq7qzod0kwwonxx3qe0igqv36",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukJlx:pei_vmTn2AxqJgzeNv9S18L2Srou2NM9y16LYn8SwHc",
+            "expire_date": "2025-08-22T09:52:25.720Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "sh7ljh7jo2lsleocin2s4eqgz8p0fqud",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukJly:UjK6JEhX2sldbWfxqrPg6lK9kFPyqqu-6A5YAbvZBRA",
+            "expire_date": "2025-08-22T09:52:26.914Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "gfpc1c3xxiagv335qfuhaknc4tupztjt",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukKxQ:0g7X-uOTD7Q_KCYComvmP4oAZ7C8GeeD0JrLDzzXER8",
+            "expire_date": "2025-08-22T11:08:20.797Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "99stdjp94dyncaerasal1vud33ejrahf",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1ukdSy:X__OUsgrsm5c3mvVrYt_0cDREGAFfIJ8cupMLlEQ4NY",
+            "expire_date": "2025-08-23T06:54:08.058Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "0o3igtw9o5tpmn88upeyc1lov18w11yb",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1ukdT1:I3zTZQqNmpfT6PhSlt0IpsVLdnnvijyZEdqpfx__g3s",
+            "expire_date": "2025-08-23T06:54:11.464Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "1ok4e61ydh52fd0vdq5inwcnz6mduuun",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1ukdVC:JW9cYh3nmWgFH35mkvR7r0vhy80ayFDq9hV09EnyAGw",
+            "expire_date": "2025-08-23T06:56:26.504Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "0v21nbopdbcpjdlufs6k26fbc57q38h9",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1ulCsW:R_6E1BcOlKoebggzqGIfXjgRAyiXQJ0gQ9MI3xPwj5Q",
+            "expire_date": "2025-08-24T20:42:52.936Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "5rizm1hslmtlhfcpyk1n239mp65d121h",
+        "fields": {
+            "session_data": ".eJxVjMEOwiAQRP-FsyHAlhY8eu83kIXdStXQpLQn479Lkx40c3vzZt4i4L7lsFdew0ziKrQWl18YMT25HA09sNwXmZayrXOUhyLPtspxIX7dTvfvIGPNbZ0YlGMPYNF444hUnMCDHgx0jIQKLfSmM8k21kLODq5X2kej9cRJfL7pPzcC:1ukGty:-miIOyJBXWOjBuvz9p-hblikJADCEfB8CDENnkFmgRs",
+            "expire_date": "2025-08-22T06:48:30.957Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "h6wvxcz3x4x56whm34vi1ydup8blbto2",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1ulXw5:Sc7EcJVvjwifirQz0CXouZJrCEdVlhq4s_Au_rPHw0I",
+            "expire_date": "2025-08-25T19:11:57.869Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "sb93ipmqn4fl0oo9qtdiyx4sga0113uv",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBBKAwu3fcMZBhAqoYmpV0Z765NutDtf-_9lwi0rTVsPS9hSuIilDj9bpH4kdsO0p3abZY8t3WZotwVedAuxznl5_Vw_w4q9fqt0aYhKlswoTXAVvvoMKtkzwik2RHZoo1jdr4AUnEmah68Q0WQAbJ4fwDZgTey:1ukHp0:zcoyl015Z4HndXo8aA_6YtSzCGOk1lQyPeUmcoMpctg",
+            "expire_date": "2025-08-22T07:47:26.268Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "cwuip0kva8mdshek1ty4q7bq6c2k05vu",
+        "fields": {
+            "session_data": ".eJxVjMsOwiAQRf-FtSGFGRhw6b7fQIaHUjU0Ke3K-O_apAvd3nPOfYnA21rD1ssSpizOwovT7xY5PUrbQb5zu80yzW1dpih3RR60y3HO5Xk53L-Dyr1-awSHkFk7E61XdHUmMTBgsuALxsEqZEWEHrVHR2ySsZQHQlCoDUbx_gC28jYz:1ukJKh:m2bnpvi1Xowo0InWj2uXGW9-Wj4gNKntyn-8gXiHQoc",
+            "expire_date": "2025-08-22T09:24:15.224Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "okbpv2yw2656maivxogejcwvcjqvke02",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1ulgvL:Ur7zqABNlYNDDnG9IKvYJjcZCurhOVxvZijbLeBvHOw",
+            "expire_date": "2025-08-26T04:47:47.934Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "6x3m2obthzfngvsfo0715q9yxre25phy",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1ulgvN:Huh2AwQdC5AoCS6J-fJTBPG-HXCYSZENnL8ibBKA194",
+            "expire_date": "2025-08-26T04:47:49.774Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "3jfjrowbuwcsxvihuy891jy6t1tlzni0",
+        "fields": {
+            "session_data": ".eJxVjMsOgjAQRf-la9O0YAdx6Z5vaKbzsKgpCYWV8d-FhIVu7znnvk3EdclxrTLHkc3V9Ob0uyWkp5Qd8APLfbI0lWUek90Ve9Bqh4nldTvcv4OMNW-1Y0htUFHCjpWxRUBuHHhRcH0KSBels2BH5DQEVvXATUDwzm8Nmc8XMHw50Q:1ulbCK:H8DDX_X98BWSfxt8XH3haHuGXRltZzbpY0f34b7FnC8",
+            "expire_date": "2025-08-25T22:40:56.749Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "wnb8lhn6r2bmtwozs6qj9dutqjp8j3uc",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1umUET:3-70nAK30P1bKazFTygWWm3hP9Y7Q_ivvFIDYntxeaE",
+            "expire_date": "2025-08-28T09:26:49.708Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "dtsdpxsssl5qpqe6tq57d96k658rvkwt",
+        "fields": {
+            "session_data": ".eJxVjEEOwiAQRe_C2pBCmcK4dO8ZCDOAVA0kpV0Z765NutDtf-_9l_BhW4vfelr8HMVZKHH63SjwI9UdxHuotya51XWZSe6KPGiX1xbT83K4fwcl9PKtNQVnEHHMlozNGXJWKg3gEgRCBxMzjRocWZ4cRGMRmVkPWkVGsCTeH-fHN_Y:1umUI9:nckbBiv5LE5IVSIqYt2lxyKYWCupY5BSDLoWgQwIaT8",
+            "expire_date": "2025-08-28T09:30:37.452Z"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 1,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/reports_photos/Binary_Search.png",
+            "status": "clean",
+            "review": "jhjh",
+            "submitted_at": "2025-05-25T08:28:43.487Z",
+            "location": "12.917537222540785, 77.4966038636086",
+            "address": "Vijayashree Layout, Kengeri, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 2,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/reports_photos/Screenshot_2025-05-23_213653.png",
+            "status": "dirty",
+            "review": "people ae throwing plastic materials without any concerns and are irresponsible in their act towards their environment",
+            "submitted_at": "2025-05-25T09:23:43.924Z",
+            "location": "12.917553058629782, 77.49666304024977",
+            "address": "Vijayashree Layout, Kengeri, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 3,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/reports_photos/Screenshot_2025-05-20_224814.png",
+            "status": "clean",
+            "review": "It is maintained well by nearby people and taken care of",
+            "submitted_at": "2025-05-25T10:12:49.041Z",
+            "location": "12.917662156303402, 77.49683960315271",
+            "address": "Vijayashree Layout, Kengeri, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 4,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751310421/fpldkev0i39wbll1uzvg.jpg",
+            "status": "clean",
+            "review": "checking after migrating to postgresql",
+            "submitted_at": "2025-07-29T18:37:08.245Z",
+            "location": "12.9173123410381,77.4963587995404",
+            "address": "Vijayashree Layout, Kengeri, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 5,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751315256/he6bkvssppowdt2avkau.jpg",
+            "status": "dirty",
+            "review": "testing different places from google map",
+            "submitted_at": "2025-07-29T18:37:08.350Z",
+            "location": "12.982023,77.558288",
+            "address": "Rajajinagar 4M Block, Rajajinagar, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560010, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 6,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751374506/wntcrstdrmocs2uvtsqf.jpg",
+            "status": "clean",
+            "review": "It is the room",
+            "submitted_at": "2025-07-29T18:37:08.413Z",
+            "location": "12.9174506,77.4964224",
+            "address": "Vijayashree Layout, Kengeri, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 7,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751442662/dfj4gl7yyiyqch1lc7ow.jpg",
+            "status": "clean",
+            "review": "Idk",
+            "submitted_at": "2025-07-29T18:37:08.480Z",
+            "location": "12.9171523,77.4976208",
+            "address": "Vijayashree Layout, Kengeri, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 8,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751604165/tyhv8rsaxf9eibxjaiht.jpg",
+            "status": "clean",
+            "review": "It is the auditorium that's all",
+            "submitted_at": "2025-07-29T18:37:08.553Z",
+            "location": "12.9227106,77.4989401",
+            "address": "exit from IEM auditorium, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 9,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751634537/m35hwhaix2veavsjlora.jpg",
+            "status": "dirty",
+            "review": "It is metro and clean",
+            "submitted_at": "2025-07-29T18:37:08.651Z",
+            "location": "12.9739575,77.6233058",
+            "address": "Kumbakonam Traditional Coffee, E 4th Street, Someshwarpura, Halasuru, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560008, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 10,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751658150/gng4tsyykhfomad305vp.png",
+            "status": "dirty",
+            "review": "Yes it is dirty",
+            "submitted_at": "2025-07-29T18:37:08.718Z",
+            "location": "12.92261,77.498558",
+            "address": "R. V. College of Engineering, Patanagere Main Road, BHEL Layout, Rajarajeshwari Nagar, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560098, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 11,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751658430/tqpvldt2vwl3tv4lfovt.jpg",
+            "status": "clean",
+            "review": "It is clean",
+            "submitted_at": "2025-07-29T18:37:08.786Z",
+            "location": "12.9174301,77.4964189",
+            "address": "Vijayashree Layout, Kengeri, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 12,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759364/t1daqw4fjz4gzaekddjl.png",
+            "status": "clean",
+            "review": "testing 1",
+            "submitted_at": "2025-07-29T18:37:08.890Z",
+            "location": "12.9715987,77.5945627",
+            "address": "St. Joseph's Indian High School, Vittal Mallya Road, D'Souza Layout, Richmond Town, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560001, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 13,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759393/slanc0peywplgz7n5tbf.png",
+            "status": "dirty",
+            "review": "testing 2",
+            "submitted_at": "2025-07-29T18:37:08.986Z",
+            "location": "12.9352232,77.6141655",
+            "address": "Gramin, 80 Feet Road, Jogi Colony, Koramangala, Bangalore South, Bengaluru Urban, Karnataka, 560095, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 14,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759689/y940thkzrkjcxcrjqc8n.jpg",
+            "status": "clean",
+            "review": "testing 3",
+            "submitted_at": "2025-07-29T18:37:09.403Z",
+            "location": "13.0352022,77.5974356",
+            "address": "Amarjyothi Nagara, Hebbal, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560032, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 15,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759740/jqvtfyieong4o05yotrh.jpg",
+            "status": "dirty",
+            "review": "testing 4",
+            "submitted_at": "2025-07-29T18:37:09.504Z",
+            "location": "12.9858091,77.6095796",
+            "address": "Sivanchetti Gardens, Shivajinagar, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560001, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 16,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759765/xjqrsjsddosj9p42ym07.jpg",
+            "status": "dirty",
+            "review": "testing 5",
+            "submitted_at": "2025-07-29T18:37:09.604Z",
+            "location": "12.9012941,77.5470174",
+            "address": "Vasanthapura, Uttarahalli, Bangalore South, Bengaluru Urban, Karnataka, 560061, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 17,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759801/jkihd2xjha6yh5bgwgcz.jpg",
+            "status": "clean",
+            "review": "testing 6",
+            "submitted_at": "2025-07-29T18:37:09.708Z",
+            "location": "12.9081357,77.6476072",
+            "address": "Parangipalya, Sector 2, HSR Layout, Bangalore South, Bengaluru Urban, Karnataka, 560102, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 18,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759819/kcbpvvaf5b8p8l2qsthi.jpg",
+            "status": "dirty",
+            "review": "testing 7",
+            "submitted_at": "2025-07-29T18:37:09.810Z",
+            "location": "13.0115271,77.5520035",
+            "address": "Narayana Nethralaya, Chord Road, Rajajinagara 1st R Block, Mahalakshmi Layout, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560010, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 19,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759842/bmugeceardyimtupha0t.jpg",
+            "status": "dirty",
+            "review": "testing 8",
+            "submitted_at": "2025-07-29T18:37:09.911Z",
+            "location": "12.8442947,77.6634488",
+            "address": "International Institute of Information Technology Bangalore, 26/C Opposite Infosys Gate, 1st Cross Road, Electronics City Phase 1, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560100, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 20,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759865/cymznrrmgrpldjikswj2.jpg",
+            "status": "dirty",
+            "review": "testing 9",
+            "submitted_at": "2025-07-29T18:37:10.010Z",
+            "location": "13.0863483,77.5747504",
+            "address": "GKVK Campus, 13th Main Road, Judicial Layout, Yelahanka taluku, Bengaluru Urban, Karnataka, 560065, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 21,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759921/oamvwdujn7ai8hge8sru.jpg",
+            "status": "dirty",
+            "review": "testing 10",
+            "submitted_at": "2025-07-29T18:37:10.185Z",
+            "location": "12.9496235,77.6998652",
+            "address": "ICICI Bank, Outer Ring Road, MSR Layout, Marathahalli, Bangalore East, Bengaluru Urban, Karnataka, 560037, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 22,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759986/h73znsota4bzvmilcwih.jpg",
+            "status": "clean",
+            "review": "testing 11",
+            "submitted_at": "2025-07-29T18:37:10.291Z",
+            "location": "12.9981442,77.5922001",
+            "address": "Palace Greens, Jayamahal Road, Jayamahal, Vasanth Nagar, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560006, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 23,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751759801/jkihd2xjha6yh5bgwgcz.jpg",
+            "status": "dirty",
+            "review": "testing 12",
+            "submitted_at": "2025-07-29T18:37:10.402Z",
+            "location": "12.91957,77.6101163",
+            "address": "HOPCOMS, 16th Main Road, BTM Layout 1st Stage, BTM Layout, Bangalore South, Bengaluru Urban, Karnataka, 560029, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 24,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751760033/ky7hqrtgnkie8yygdech.jpg",
+            "status": "dirty",
+            "review": "testing 13",
+            "submitted_at": "2025-07-29T18:37:10.527Z",
+            "location": "12.8750432,77.6407894",
+            "address": "Bangalore South, Bengaluru Urban, Karnataka, 560114, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 25,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751760057/zfpjetc9tlykdtwt3wkk.jpg",
+            "status": "dirty",
+            "review": "testing 14",
+            "submitted_at": "2025-07-29T18:37:10.626Z",
+            "location": "13.0281309,77.6347396",
+            "address": "282/1, 1st Cross Road, Grace Town, HBR Layout, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560043, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 27,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751760115/xw9jsvihm4a1dteiyhqt.jpg",
+            "status": "clean",
+            "review": "testing 16",
+            "submitted_at": "2025-07-29T18:37:10.835Z",
+            "location": "12.9356923,77.5351421",
+            "address": "PES University, Outer Ring Road, Veerabhadra Nagara, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560085, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 28,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751760143/m4nrufsg78krwb28q0wo.jpg",
+            "status": "dirty",
+            "review": "testing 17",
+            "submitted_at": "2025-07-29T18:37:10.935Z",
+            "location": "13.049437,77.6846278",
+            "address": "Ramapura, Bangalore East, Bengaluru Urban, Karnataka, 560016, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 29,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751760172/ec0c49dfc9ztbgiruyz1.jpg",
+            "status": "clean",
+            "review": "testing 18",
+            "submitted_at": "2025-07-29T18:37:11.033Z",
+            "location": "12.8889331,77.5857356",
+            "address": "6th Main Road, Nataraja Layout, Bangalore South, Bengaluru Urban, Karnataka, 560078, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 30,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751760201/fdbyek7vniwj5gx6dhby.jpg",
+            "status": "dirty",
+            "review": "testing 19",
+            "submitted_at": "2025-07-29T18:37:11.132Z",
+            "location": "12.9752273,77.7000642",
+            "address": "Ferns City, Bangalore East, Bengaluru Urban, Karnataka, 560048, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 31,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751760222/excmw3ivpcjrql6veczp.jpg",
+            "status": "clean",
+            "review": "testin 20",
+            "submitted_at": "2025-07-29T18:37:11.233Z",
+            "location": "12.8602881,77.5773645",
+            "address": "Gottigere, Bangalore South, Bengaluru Urban, Karnataka, 560083, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 32,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751880931/mszh2a7xnc8mva9yfwxc.jpg",
+            "status": "dirty",
+            "review": "dffiguhsdaiufsduf",
+            "submitted_at": "2025-07-29T18:37:11.298Z",
+            "location": "12.922633,77.498566",
+            "address": "R. V. College of Engineering, exit from IEM auditorium, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 33,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1752395832/c1klbgzit5oipgvfkmbb.jpg",
+            "status": "clean",
+            "review": "Pg",
+            "submitted_at": "2025-07-29T18:37:11.393Z",
+            "location": "12.9173905,77.4964564",
+            "address": "Vijayashree Layout, Kengeri, Mailasandra, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 34,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1752498683/jcszvk6sgmsfpyygiagf.jpg",
+            "status": "dirty",
+            "review": "Near bihari message no dustbin",
+            "submitted_at": "2025-07-29T18:37:11.457Z",
+            "location": "12.9167635,77.4999526",
+            "address": "Vijayashree Layout, Kengeri, Mailasandra, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560060, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 35,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1752560257/kbsnufngwqgqgxuzdmvi.jpg",
+            "status": "clean",
+            "review": "Laptop",
+            "submitted_at": "2025-07-29T18:37:11.552Z",
+            "location": "12.9222877,77.4983505",
+            "address": "R. V. College of Engineering, Global Village Road, Sattva Global City, Mailasandra, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 36,
+        "fields": {
+            "user": [
+                "aman"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1752743971/yavlclqbkx8oxwdrm6st.png",
+            "status": "dirty",
+            "review": "this place is dirty because the dustbins are not emptied properly",
+            "submitted_at": "2025-07-29T18:37:11.749Z",
+            "location": "12.9226436402116,77.4986039584656",
+            "address": "R. V. College of Engineering, Way to admission office, Dubasi Palya, Mailasandra, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 37,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1752843030/vkddro87rdox66r0nmvb.jpg",
+            "status": "clean",
+            "review": "Because the girl in this picture is dirty 🤢",
+            "submitted_at": "2025-07-29T18:37:11.822Z",
+            "location": "12.9226687,77.500133",
+            "address": "R. V. College of Engineering, Patanagere Main Road, BHEL Layout, Rajarajeshwari Nagar, Mailasandra, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560098, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 26,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/http://res.cloudinary.com/dgqm61eqb/image/upload/v1751760084/fntmzq56yydmjh9qqkjq.jpg",
+            "status": "clean",
+            "review": "testing 15",
+            "submitted_at": "2025-07-29T18:37:10.731Z",
+            "location": "12.9181911,77.5022937",
+            "address": "Global Village Road, Sattva Global City, Rajarajeshwari Nagar, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560098, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 38,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/v1754545307/qhjphpzovscyb1zjxora.jpg",
+            "status": "dirty",
+            "review": "demo 07-08-2025",
+            "submitted_at": "2025-08-07T05:41:47.926Z",
+            "location": "12.917368125564916, 77.49645714711407",
+            "address": "Vijayashree Layout, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 39,
+        "fields": {
+            "user": [
+                "Abhishek77"
+            ],
+            "photo": "image/upload/v1754618644/rlh3hoqyj3laqj93gcjj.png",
+            "status": "dirty",
+            "review": "No clean",
+            "submitted_at": "2025-08-08T02:04:06.543Z",
+            "location": "12.917388600816217, 77.49642942887061",
+            "address": "Vijayashree Layout, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 41,
+        "fields": {
+            "user": [
+                "Abhishek77"
+            ],
+            "photo": "image/upload/v1754618692/ygshzifhgkwfzscsow0z.png",
+            "status": "clean",
+            "review": "It is clean",
+            "submitted_at": "2025-08-08T02:04:54.945Z",
+            "location": "12.91732520887516, 77.49643075615906",
+            "address": "Vijayashree Layout, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 40,
+        "fields": {
+            "user": [
+                "Abhishek77"
+            ],
+            "photo": "image/upload/v1754618645/tfc7fqkvcxcn32rbcjvy.png",
+            "status": "dirty",
+            "review": "No clean",
+            "submitted_at": "2025-08-08T02:04:07.427Z",
+            "location": "12.917388600816217, 77.49642942887061",
+            "address": "Vijayashree Layout, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 42,
+        "fields": {
+            "user": [
+                "Abhishek77"
+            ],
+            "photo": null,
+            "status": "clean",
+            "review": "it is clean",
+            "submitted_at": "2025-08-08T02:20:17.574Z",
+            "location": "12.917258275632047, 77.4964489292781",
+            "address": "Vijayashree Layout, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 43,
+        "fields": {
+            "user": null,
+            "photo": "image/upload/v1754620272/wnak2nvafwxuzaiu4vhw.png",
+            "status": "clean",
+            "review": "This place is clean",
+            "submitted_at": "2025-08-08T02:31:14.142Z",
+            "location": "12.917419721014182, 77.49643928005317",
+            "address": "Vijayashree Layout, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 44,
+        "fields": {
+            "user": [
+                "Abhishek77"
+            ],
+            "photo": "image/upload/v1754634597/xyceprveplxsqcre4coe.png",
+            "status": "clean",
+            "review": "Dirty place",
+            "submitted_at": "2025-08-08T06:29:59.854Z",
+            "location": "12.91731007659758, 77.49642590244432",
+            "address": "Vijayashree Layout, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 45,
+        "fields": {
+            "user": [
+                "Abhishek77"
+            ],
+            "photo": "image/upload/v1754634601/qjl6abflllomb2xl4ku4.png",
+            "status": "clean",
+            "review": "Dirty place",
+            "submitted_at": "2025-08-08T06:30:03.191Z",
+            "location": "12.91731007659758, 77.49642590244432",
+            "address": "Vijayashree Layout, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 46,
+        "fields": {
+            "user": [
+                "Abhishek77"
+            ],
+            "photo": "image/upload/v1754634599/yjypcnw0tvr74yclplej.png",
+            "status": "clean",
+            "review": "Dirty place",
+            "submitted_at": "2025-08-08T06:30:03.529Z",
+            "location": "12.91731007659758, 77.49642590244432",
+            "address": "Vijayashree Layout, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 47,
+        "fields": {
+            "user": [
+                "Abhishek77"
+            ],
+            "photo": "image/upload/v1754634698/msegc0lvrhbaxzjrnnb6.png",
+            "status": "clean",
+            "review": "This place is clean",
+            "submitted_at": "2025-08-08T06:31:41.337Z",
+            "location": "12.917378849706632, 77.49643351267633",
+            "address": "Vijayashree Layout, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 48,
+        "fields": {
+            "user": [
+                "girish"
+            ],
+            "photo": "image/upload/v1754711749/uxyfrqhey8zxruzyszkn.jpg",
+            "status": "dirty",
+            "review": "the rules are not strictly followed and the fines of people littering are not kept upto the mark and the fines are not carried forwards",
+            "submitted_at": "2025-08-09T03:55:50.321Z",
+            "location": "12.917320285877535, 77.49642437713827",
+            "address": "Vijayashree Layout, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 49,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/v1754722636/argplswnvspettect1gv.jpg",
+            "status": "clean",
+            "review": "testing",
+            "submitted_at": "2025-08-09T06:57:17.326Z",
+            "location": "12.922638320336949, 77.49862318497982",
+            "address": "R. V. College of Engineering, way to DTL huddle, Dubasi Palya, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.report",
+        "pk": 50,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "photo": "image/upload/v1754858936/ylwnqfolserg5zhrwbdu.jpg",
+            "status": "clean",
+            "review": "this place is clean because it is maintained well by people living in here",
+            "submitted_at": "2025-08-10T20:48:56.778Z",
+            "location": "12.92959075, 77.492956",
+            "address": "Dubasi Palya, Kengeri, Bengaluru West City Corporation, Bengaluru, Bangalore South, Bengaluru Urban, Karnataka, 560059, India"
+        }
+    },
+    {
+        "model": "reports.hotspot",
+        "pk": 1,
+        "fields": {
+            "cluster_id": 0,
+            "latitude": 12.9200657164736,
+            "longitude": 77.4991062164525,
+            "report_count": 6,
+            "address": "Vijayashree Layout, Kengeri, Mailasandra, Bangalore South, Bengaluru Urban, Karnataka, 560059, India",
+            "last_updated": "2025-07-29T19:30:08.169Z"
+        }
+    },
+    {
+        "model": "reports.hotspot",
+        "pk": 2,
+        "fields": {
+            "cluster_id": 1,
+            "latitude": 12.9798833,
+            "longitude": 77.6164427,
+            "report_count": 2,
+            "address": "Kumbakonam Traditional Coffee, E 4th Street, Someshwarpura, Halasuru, Bengaluru, Bangalore North, Bengaluru Urban, Karnataka, 560008, India",
+            "last_updated": "2025-07-29T19:30:08.207Z"
+        }
+    },
+    {
+        "model": "reports.hotspot",
+        "pk": 3,
+        "fields": {
+            "cluster_id": 2,
+            "latitude": 12.9273966,
+            "longitude": 77.6121409,
+            "report_count": 2,
+            "address": "Gramin, 80 Feet Road, Jogi Colony, Koramangala, Bangalore South, Bengaluru Urban, Karnataka, 560095, India",
+            "last_updated": "2025-07-29T19:30:08.242Z"
+        }
+    },
+    {
+        "model": "users.userprofile",
+        "pk": 7,
+        "fields": {
+            "user": [
+                "admin"
+            ],
+            "phone_number": "N/A"
+        }
+    },
+    {
+        "model": "users.userprofile",
+        "pk": 9,
+        "fields": {
+            "user": [
+                "aman"
+            ],
+            "phone_number": "N/A"
+        }
+    },
+    {
+        "model": "users.userprofile",
+        "pk": 10,
+        "fields": {
+            "user": [
+                "giri"
+            ],
+            "phone_number": "6362905961"
+        }
+    },
+    {
+        "model": "users.userprofile",
+        "pk": 11,
+        "fields": {
+            "user": [
+                "Abhishek77"
+            ],
+            "phone_number": "7483904062"
+        }
+    },
+    {
+        "model": "users.userprofile",
+        "pk": 12,
+        "fields": {
+            "user": [
+                "girish"
+            ],
+            "phone_number": "6362905961"
+        }
+    }
+]

@@ -21,7 +21,7 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         
-        <label for="photo">Upload Photo or click photo:</label>
+        <label for="photo">Click photo:</label>
         <input type="file" name="photo" accept="image/*" capture="environment" required>
 
         <label for="status">Is the place clean or dirty?</label>

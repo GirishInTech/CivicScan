@@ -1,8 +1,10 @@
-FROM python:3.11-slim
+# Use slim Python base
+FROM python:3.11-slim AS base
 
+# Install build deps in a builder stage
+FROM base AS builder
 WORKDIR /app
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpq-dev \
@@ -12,9 +14,23 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+
+# Final lightweight image
+FROM base
+WORKDIR /app
+
+# Install runtime dependencies only (no compilers)
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    libjpeg-dev \
+    zlib1g-dev \
+    default-libmysqlclient-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy installed Python packages from builder
+COPY --from=builder /install /usr/local
 
 # Copy project files
 COPY . .
@@ -22,5 +38,5 @@ COPY . .
 # Collect static files
 RUN python manage.py collectstatic --noinput --clear
 
-# Run app with Gunicorn
-CMD ["gunicorn", "BrillianBengaluru.wsgi:application", "--bind", "0.0.0.0:${PORT}"]
+# Run with Gunicorn (expand PORT properly)
+CMD ["sh", "-c", "gunicorn BrillianBengaluru.wsgi:application --bind 0.0.0.0:${PORT:-8000}"]
