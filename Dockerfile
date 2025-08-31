@@ -27,6 +27,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     zlib1g-dev \
     default-libmysqlclient-dev \
+    postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy installed Python packages from builder
@@ -40,3 +41,5 @@ RUN python manage.py collectstatic --noinput --clear
 
 # Run with Gunicorn (expand PORT properly)
 CMD ["sh", "-c", "gunicorn BrillianBengaluru.wsgi:application --bind 0.0.0.0:${PORT:-8000}"]
+
+
