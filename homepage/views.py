@@ -17,18 +17,6 @@ def custom_logout(request):
     logout(request)
     return redirect('home')  # This 'home' must match your homepage URL name
 
-def offline(request):
-    """View for the offline page shown when there's no internet connection."""
-    return render(request, 'offline.html', status=200)
-
-
-def service_worker(request):
-    """Serve the service worker file with the correct MIME type."""
-    sw_path = os.path.join(settings.STATIC_ROOT, 'serviceworker.js')
-    response = FileResponse(open(sw_path, 'rb'), content_type='application/javascript')
-    response['Service-Worker-Allowed'] = '/'
-    return response
-
 
 def debug_nav(request):
     return render(request, "debug_nav.html")

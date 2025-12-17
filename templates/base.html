@@ -12,17 +12,8 @@
     <script src="{% static 'js/script.js' %}"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="{% static 'manifest.json' %}">
-
-    <!-- PWA Meta -->
-    <meta name="theme-color" content="#4CAF50">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
     <!-- Icons -->
     <link rel="icon" type="image/png" sizes="96x96" href="{% static 'icons/icon-96.png' %}">
-    <link rel="apple-touch-icon" href="{% static 'icons/icon-180.png' %}">
 </head>
 
 
@@ -75,11 +66,6 @@
               <a href="{% url 'signup' %}" class="nav-link">Sign Up</a>
               <a href="{% url 'login' %}" class="nav-link">Login</a>
           {% endif %}
-
-          <!-- Install App Button -->
-          <button id="install-button" class="install-button" style="display: none;">
-              <i class="fas fa-download"></i> Install App
-          </button>
       </div>
   </div>
 </nav>
@@ -93,152 +79,6 @@
     <footer>
         <p>© 2025 CivicScan</p>
     </footer>
-
-<script>
-  // Enhanced Service Worker Registration
-  if ('serviceWorker' in navigator) {
-    console.log('Service Worker API is supported');
-    
-    // Wait for window to load to prevent slowing down initial page render
-    window.addEventListener('load', () => {
-      // Register service worker from root to get correct scope
-      const swUrl = '/serviceworker.js';
-      console.log('Registering Service Worker at:', swUrl);
-      
-      // Register service worker with root scope
-      navigator.serviceWorker.register(swUrl, { scope: '/' })
-        .then(registration => {
-          console.log('Service Worker registration successful with scope: ', registration.scope);
-          console.log('✅ Service Worker registered with scope:', registration.scope);
-          
-          // Check for updates
-          registration.update().then(() => {
-            console.log('✅ Service Worker update check completed');
-          }).catch(error => {
-            console.log('❌ Service Worker update check failed:', error);
-          });
-          
-          // Handle controller change (page refresh needed)
-          let refreshing = false;
-          navigator.serviceWorker.addEventListener('controllerchange', () => {
-            if (refreshing) return;
-            window.location.reload();
-            refreshing = true;
-          });
-          
-          // Check if app is running in standalone mode
-          const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-          console.log(`App running in ${isStandalone ? 'standalone' : 'browser'} mode`);
-          
-          // Listen for display mode changes
-          window.matchMedia('(display-mode: standalone)').addEventListener('change', (e) => {
-            console.log('Display mode changed to', e.matches ? 'standalone' : 'browser');
-          });
-        })
-        .catch(error => {
-          console.error('❌ Service Worker registration failed:', error);
-          // Show a user-friendly message if needed
-          const installButton = document.getElementById('install-button');
-          if (installButton) {
-            installButton.textContent = 'Installation Not Supported';
-            installButton.disabled = true;
-          }
-        });
-      
-      // Listen for messages from the service worker
-      navigator.serviceWorker.addEventListener('message', (event) => {
-        console.log('Message from Service Worker:', event.data);
-        // Handle messages from service worker if needed
-      });
-    });
-  } else {
-    console.warn('Service workers are not supported in this browser');
-  }
-
-  // Install Prompt Handling
-  let deferredPrompt;
-  const installButton = document.getElementById('install-button');
-  
-  // Debug info
-  console.log('=== PWA Debug Info ===');
-  console.log('Install button element:', installButton);
-  console.log('Service Worker supported:', 'serviceWorker' in navigator);
-  console.log('Display mode:', window.matchMedia('(display-mode: standalone)').matches ? 'standalone' : 'browser');
-  
-  // Function to show the install button
-  function showInstallButton() {
-    if (installButton) {
-      console.log('Showing install button');
-      installButton.style.display = 'flex';
-      installButton.style.visibility = 'visible';
-    }
-  }
-  
-  // Function to handle installation
-  function handleInstallClick() {
-    if (!deferredPrompt) {
-      console.log('No deferred prompt available');
-      return;
-    }
-    
-    console.log('Showing install prompt');
-    // Show the install prompt
-    deferredPrompt.prompt();
-    
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then(choiceResult => {
-      console.log('User response to install prompt:', choiceResult.outcome);
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-        // Hide the install button after successful installation
-        if (installButton) {
-          installButton.style.display = 'none';
-        }
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-      // Clear the saved prompt since it can't be used again
-      deferredPrompt = null;
-    }).catch(error => {
-      console.error('Error showing install prompt:', error);
-    });
-  }
-  
-  // Handle beforeinstallprompt event
-  window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('beforeinstallprompt event fired');
-    // Prevent the mini-infobar from appearing on mobile
-    e.preventDefault();
-    // Stash the event so it can be triggered later
-    deferredPrompt = e;
-    
-    // Show the install button
-    showInstallButton();
-    
-    // Remove any existing click listeners to prevent duplicates
-    if (installButton) {
-      installButton.removeEventListener('click', handleInstallClick);
-      installButton.addEventListener('click', handleInstallClick);
-    }
-  });
-  
-  // Hide install button if app is already installed
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    console.log('App is running in standalone mode');
-    if (installButton) {
-      installButton.style.display = 'none';
-    }
-  }
-
-  // Track successful installation
-  window.addEventListener('appinstalled', () => {
-    console.log('App was installed');
-    if (installButton) {
-      installButton.style.display = 'none';
-    }
-    // You could send an analytics event here
-  });
-</script>
 
 
 </body>

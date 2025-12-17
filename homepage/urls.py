@@ -5,7 +5,5 @@ from .views import health_check, debug_nav
 urlpatterns = [
     path('', views.home, name='home'),
     path("healthz", health_check, name="healthz"),
-    path('offline/', views.offline, name='offline'),
     path("debug-nav/", debug_nav, name="debug_nav"),
-
 ]
