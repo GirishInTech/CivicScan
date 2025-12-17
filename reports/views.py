@@ -130,17 +130,17 @@ def report_data_json(request):
             continue  # skip invalid locations
 
         data.append({
-            'lat': lat,
-            'lng': lng,
-            'status': report.status,
-            'review': report.review,
-            'user': report.user.username if report.user else "Anonymous",
-            'email': report.user.email if report.user else "N/A",
-            'address': report.address or "Address not available",
-            'photo_url': report.photo.url if report.photo else None,
-            #'photo_url': report.photo.url if report.photo else "",
+                'lat': lat,
+                'lng': lng,
+                'status': report.status,
+                'review': report.review,
+                'user': report.user.username if report.user else "Anonymous",
+                'email': report.user.email if report.user else "N/A",
+                'address': report.address or "Address not available",
+                'photo_url': report.photo.url if report.photo else None,
+                #'photo_url': report.photo.url if report.photo else "",
 
-        })
+            })
     return JsonResponse(data, safe=False)
 
 
