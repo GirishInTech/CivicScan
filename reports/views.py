@@ -177,6 +177,7 @@ def authority_dashboard(request):
     """Authority dashboard showing all reports with filtering"""
     status_filter = request.GET.get('status', 'all')
     workflow_filter = request.GET.get('workflow', 'all')
+    username_filter = request.GET.get('username', 'all')
     
     reports = Report.objects.all().order_by('submitted_at')  # Changed to ascending order
     
@@ -187,15 +188,23 @@ def authority_dashboard(request):
     if workflow_filter != 'all':
         reports = reports.filter(workflow_status=workflow_filter)
     
+    if username_filter != 'all':
+        reports = reports.filter(user__username=username_filter)
+    
     # Pagination
     paginator = Paginator(reports, 10)
     page_number = request.GET.get('page')
     reports = paginator.get_page(page_number)
     
+    # Get all unique usernames for dropdown
+    all_usernames = Report.objects.values_list('user__username', flat=True).distinct().order_by('user__username')
+    
     context = {
         'reports': reports,
         'status_filter': status_filter,
         'workflow_filter': workflow_filter,
+        'username_filter': username_filter,
+        'all_usernames': all_usernames,
         'total_pending': Report.objects.filter(workflow_status='pending').count(),
         'total_under_review': Report.objects.filter(workflow_status='under_review').count(),
         'total_resolved': Report.objects.filter(workflow_status='resolved').count(),
