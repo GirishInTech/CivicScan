@@ -46,9 +46,8 @@ class Command(BaseCommand):
         )
         
         if created:
-            authority_user.set_password('authority123')  # Set a default password
             authority_user.save()
-            self.stdout.write(self.style.SUCCESS("Created authority user: authority1 (password: authority123)"))
+            self.stdout.write(self.style.SUCCESS("Created authority user: authority1"))
         
         # Add user to Authority group
         authority_user.groups.add(authority_group)
