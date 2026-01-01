@@ -1,6 +1,8 @@
 # Core Django + WSGI server
 Django==5.1
 gunicorn==21.2.0
+channels==4.0.0
+channels-redis==4.1.0
 
 # DB + Env config
 mysqlclient==2.2.4
@@ -30,3 +32,4 @@ dj-database-url
 python-dotenv
 setuptools>=65.0.0
 wheel
+channels

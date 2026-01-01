@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Delete Report #{{ report.id }} - CivicScan{% endblock %}
+
+{% block content %}
+<!-- Add top padding to account for fixed navbar -->
+<div style="padding-top: 80px;">
+    
+    <!-- Header Section -->
+    <section class="section-header" style="padding: 2rem 0;">
+        <div class="container">
+            <div style="margin-bottom: 2rem;">
+                <nav style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    <a href="{% url 'dashboard' %}" style="color: var(--primary-color); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--secondary-color)'" onmouseout="this.style.color='var(--primary-color)'">
+                        <i class="fas fa-user-circle"></i> Dashboard
+                    </a>
+                    <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+                    <a href="{% url 'user_report_detail' report.id %}" style="color: var(--primary-color); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--secondary-color)'" onmouseout="this.style.color='var(--primary-color)'">
+                        Report #{{ report.id }}
+                    </a>
+                    <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+                    <span style="font-weight: 600;">Delete</span>
+                </nav>
+                
+                <div style="text-align: center;">
+                    <i class="fas fa-trash-alt section-icon" style="color: var(--danger-color);"></i>
+                    <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Delete Report #{{ report.id }}</h2>
+                    <p style="color: var(--text-secondary); font-size: 1.125rem;">This action cannot be undone</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section style="background: var(--bg-secondary); padding: 2rem 0;">
+        <div class="container">
+            <div style="max-width: 600px; margin: 0 auto;">
+                
+                <!-- Warning Card -->
+                <div class="stat-card" style="background: var(--bg-primary); padding: 2.5rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); border: 1px solid rgba(239, 68, 68, 0.2); position: relative;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-secondary);"></div>
+                    
+                    <!-- Warning Message -->
+                    <div style="margin-bottom: 2rem;">
+                        <div style="background: rgba(239, 68, 68, 0.05); padding: 1.5rem; border-radius: var(--border-radius); border: 1px solid rgba(239, 68, 68, 0.2); text-align: center;">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--danger-color); margin-bottom: 1rem;"></i>
+                            <h4 style="color: var(--danger-color); font-weight: 700; margin-bottom: 1rem;">Are you absolutely sure?</h4>
+                            <p style="margin: 0; color: var(--text-primary); line-height: 1.6;">
+                                This action will permanently delete your report and cannot be undone. All associated data including photos and descriptions will be lost forever.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Report Summary -->
+                    <div style="margin-bottom: 2rem;">
+                        <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid var(--bg-secondary); padding-bottom: 0.5rem;">Report Summary</h5>
+                        
+                        <div style="display: grid; gap: 1rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--bg-secondary); border-radius: var(--border-radius);">
+                                <strong style="color: var(--text-secondary);">Report ID:</strong>
+                                <span style="color: var(--text-primary); font-weight: 700; font-family: monospace;">#{{ report.id }}</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--bg-secondary); border-radius: var(--border-radius);">
+                                <strong style="color: var(--text-secondary);">Report Type:</strong>
+                                <span style="padding: 0.25rem 0.75rem; border-radius: 15px; font-weight: 700; font-size: 0.8rem; {% if report.status == 'dirty' %}background: rgba(239, 68, 68, 0.1); color: var(--danger-color);{% else %}background: rgba(16, 185, 129, 0.1); color: var(--success-color);{% endif %}">
+                                    {{ report.status|title }}
+                                </span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--bg-secondary); border-radius: var(--border-radius);">
+                                <strong style="color: var(--text-secondary);">Submitted:</strong>
+                                <span style="color: var(--text-primary); font-weight: 600;">{{ report.submitted_at|date:"M d, Y" }}</span>
+                            </div>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--bg-secondary); border-radius: var(--border-radius);">
+                                <strong style="color: var(--text-secondary);">Status:</strong>
+                                <span style="padding: 0.25rem 0.75rem; border-radius: 15px; font-weight: 700; font-size: 0.8rem; background: rgba(245, 158, 11, 0.1); color: var(--warning-color);">
+                                    {{ report.workflow_status|title }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Description Preview -->
+                    {% if report.review %}
+                        <div style="margin-bottom: 2rem;">
+                            <h6 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.75rem;">Description Preview:</h6>
+                            <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--border-radius); border-left: 3px solid var(--accent-color);">
+                                <p style="margin: 0; color: var(--text-primary); line-height: 1.6; font-style: italic;">
+                                    "{{ report.review|truncatewords:20 }}{% if report.review|wordcount > 20 %}..."{% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Action Buttons -->
+                    <form method="post" style="display: contents;">
+                        {% csrf_token %}
+                        <div style="display: flex; gap: 1rem;">
+                            <button type="submit" class="btn-danger" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 2rem; border: none; border-radius: var(--border-radius); font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gradient-secondary); color: var(--text-light); box-shadow: var(--shadow-lg); flex: 1;">
+                                <i class="fas fa-trash-alt"></i> Yes, Delete Forever
+                            </button>
+                            
+                            <a href="{% url 'user_report_detail' report.id %}" class="btn btn-outline" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 2rem; border: 2px solid var(--success-color); border-radius: var(--border-radius); font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: transparent; color: var(--success-color); flex: 1;">
+                                <i class="fas fa-arrow-left"></i> Cancel & Go Back
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Additional Info -->
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <small style="color: var(--text-secondary); line-height: 1.5;">
+                        <i class="fas fa-info-circle"></i>
+                        You can only delete reports that are still pending review. Once an authority starts reviewing your report, deletion will no longer be possible.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+/* Danger button styling */
+.btn-danger {
+    background: var(--gradient-secondary) !important;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Success outline button */
+.btn-outline:hover {
+    background: var(--success-color) !important;
+    color: var(--text-light) !important;
+    border-color: var(--success-color) !important;
+}
+
+/* Floating animation for icons */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.section-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse animation for warning icon */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.fa-exclamation-triangle {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    div[style*="flex: 1"] {
+        flex: 1 1 100% !important;
+    }
+    
+    div[style*="display: flex; gap: 1rem;"] {
+        flex-direction: column !important;
+    }
+    
+    h2 {
+        font-size: 2rem !important;
+    }
+    
+    div[style*="display: flex; justify-content: space-between;"] {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 0.5rem !important;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,10 @@
+<!-- This is a placeholder notification icon file -->
+<!-- In a real implementation, this would be a PNG file -->
+<!-- For now, we'll create a simple SVG icon that can be converted to PNG -->
+
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="16" fill="#6366F1"/>
+  <path d="M32 16C36.4183 16 40 19.5817 40 24V30C40 31.5 41 32.5 42 33.5C42.5 34 42 35 41.5 35H22.5C22 35 21.5 34 22 33.5C23 32.5 24 31.5 24 30V24C24 19.5817 27.5817 16 32 16Z" fill="white"/>
+  <path d="M29 38C29 39.6569 30.3431 41 32 41C33.6569 41 35 39.6569 35 38H29Z" fill="white"/>
+  <circle cx="44" cy="20" r="8" fill="#EF4444"/>
+</svg>

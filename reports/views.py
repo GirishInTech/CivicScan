@@ -9,6 +9,10 @@ from geopy.exc import GeocoderTimedOut
 import time
 from django.http import JsonResponse
 from .models import Hotspot
+from django.contrib.auth.decorators import user_passes_test
+from django.shortcuts import get_object_or_404
+from django.utils import timezone
+from django.contrib import messages
 
 
 # helper function for reverse geocoding with retry to avoid timeouts
@@ -159,4 +163,95 @@ def hotspot_data(request):
             'address': hotspot.address,
         })
 
+    return JsonResponse(data, safe=False)
+
+
+# Authority Dashboard Views
+def is_authority(user):
+    """Check if user is part of Authorities group"""
+    return user.groups.filter(name='Authorities').exists() or user.is_staff
+
+
+@user_passes_test(is_authority)
+def authority_dashboard(request):
+    """Authority dashboard showing all reports with filtering"""
+    status_filter = request.GET.get('status', 'all')
+    workflow_filter = request.GET.get('workflow', 'all')
+    
+    reports = Report.objects.all().order_by('submitted_at')  # Changed to ascending order
+    
+    # Apply filters
+    if status_filter != 'all':
+        reports = reports.filter(status=status_filter)
+    
+    if workflow_filter != 'all':
+        reports = reports.filter(workflow_status=workflow_filter)
+    
+    # Pagination
+    paginator = Paginator(reports, 10)
+    page_number = request.GET.get('page')
+    reports = paginator.get_page(page_number)
+    
+    context = {
+        'reports': reports,
+        'status_filter': status_filter,
+        'workflow_filter': workflow_filter,
+        'total_pending': Report.objects.filter(workflow_status='pending').count(),
+        'total_under_review': Report.objects.filter(workflow_status='under_review').count(),
+        'total_resolved': Report.objects.filter(workflow_status='resolved').count(),
+    }
+    
+    return render(request, 'reports/authority_dashboard.html', context)
+
+
+@user_passes_test(is_authority)
+def report_detail_authority(request, report_id):
+    """Detailed view of a report for authority review"""
+    report = get_object_or_404(Report, id=report_id)
+    
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        comments = request.POST.get('comments', '')
+        
+        if action in ['under_review', 'resolved', 'rejected']:
+            report.workflow_status = action
+            report.reviewed_by = request.user
+            report.reviewed_at = timezone.now()
+            report.authority_comments = comments
+            report.save()
+            
+            messages.success(request, f'Report status updated to {action.replace("_", " ").title()}')
+            return redirect('authority_dashboard')
+    
+    return render(request, 'reports/report_detail_authority.html', {'report': report})
+
+
+@user_passes_test(is_authority)
+def authority_reports_json(request):
+    """JSON endpoint for authority dashboard map view"""
+    reports = Report.objects.all()
+    data = []
+    
+    for report in reports:
+        try:
+            lat_str, lng_str = report.location.split(',')
+            lat = float(lat_str.strip())
+            lng = float(lng_str.strip())
+        except Exception:
+            continue
+            
+        data.append({
+            'id': report.id,
+            'lat': lat,
+            'lng': lng,
+            'status': report.status,
+            'workflow_status': report.workflow_status,
+            'review': report.review,
+            'user': report.user.username if report.user else "Anonymous",
+            'address': report.address or "Address not available",
+            'photo_url': report.photo.url if report.photo else None,
+            'submitted_at': report.submitted_at.strftime('%Y-%m-%d %H:%M'),
+            'reviewed_by': report.reviewed_by.username if report.reviewed_by else None,
+        })
+    
     return JsonResponse(data, safe=False)

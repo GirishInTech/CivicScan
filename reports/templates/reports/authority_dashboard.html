@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Authority Dashboard - CivicScan{% endblock %}
+
+{% block content %}
+<!-- Add top padding to account for fixed navbar -->
+<div style="padding-top: 80px;">
+    
+    <!-- Header Section -->
+    <section class="section-header" style="padding: 2rem 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <i class="fas fa-shield-alt section-icon" style="color: var(--primary-color);"></i>
+                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Authority Dashboard</h2>
+                <p style="color: var(--text-secondary); font-size: 1.125rem;">Manage and review cleanliness reports</p>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+                <div class="stat-card" style="background: var(--bg-primary); padding: 1.5rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-lg); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; border: 1px solid rgba(99, 102, 241, 0.1);">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-accent);"></div>
+                    <i class="fas fa-clock" style="font-size: 2rem; color: var(--warning-color); margin-bottom: 0.5rem;"></i>
+                    <h3 style="font-size: 1.75rem; font-weight: 800; color: var(--warning-color); margin-bottom: 0.25rem;">{{ total_pending }}</h3>
+                    <p style="color: var(--text-secondary); font-weight: 600;">Pending Review</p>
+                </div>
+                
+                <div class="stat-card" style="background: var(--bg-primary); padding: 1.5rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-lg); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; border: 1px solid rgba(99, 102, 241, 0.1);">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-primary);"></div>
+                    <i class="fas fa-eye" style="font-size: 2rem; color: var(--info-color); margin-bottom: 0.5rem;"></i>
+                    <h3 style="font-size: 1.75rem; font-weight: 800; color: var(--info-color); margin-bottom: 0.25rem;">{{ total_under_review }}</h3>
+                    <p style="color: var(--text-secondary); font-weight: 600;">Under Review</p>
+                </div>
+                
+                <div class="stat-card" style="background: var(--bg-primary); padding: 1.5rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-lg); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; border: 1px solid rgba(99, 102, 241, 0.1);">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-success);"></div>
+                    <i class="fas fa-check-circle" style="font-size: 2rem; color: var(--success-color); margin-bottom: 0.5rem;"></i>
+                    <h3 style="font-size: 1.75rem; font-weight: 800; color: var(--success-color); margin-bottom: 0.25rem;">{{ total_resolved }}</h3>
+                    <p style="color: var(--text-secondary); font-weight: 600;">Resolved</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dashboard Section -->
+    <section style="background: var(--bg-secondary); padding: 2rem 0;">
+        <div class="container">
+            
+            <!-- Filter Section -->
+            <div class="stat-card" style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); margin-bottom: 2rem; border: 1px solid rgba(99, 102, 241, 0.1);">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-primary);"></div>
+                <h4 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <i class="fas fa-filter" style="color: var(--primary-color);"></i>
+                    Filter Reports
+                </h4>
+                <form method="GET" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; align-items: end;">
+                    <div>
+                        <label for="status" style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 600;">Report Type:</label>
+                        <select name="status" class="form-input" id="status" style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: var(--border-radius); background: var(--bg-primary); color: var(--text-primary); transition: all 0.3s ease; font-weight: 500;">
+                            <option value="all" {% if status_filter == 'all' %}selected{% endif %}>All Types</option>
+                            <option value="dirty" {% if status_filter == 'dirty' %}selected{% endif %}>Dirty Reports</option>
+                            <option value="clean" {% if status_filter == 'clean' %}selected{% endif %}>Clean Reports</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="workflow" style="display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-weight: 600;">Status:</label>
+                        <select name="workflow" class="form-input" id="workflow" style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: var(--border-radius); background: var(--bg-primary); color: var(--text-primary); transition: all 0.3s ease; font-weight: 500;">
+                            <option value="all" {% if workflow_filter == 'all' %}selected{% endif %}>All Status</option>
+                            <option value="pending" {% if workflow_filter == 'pending' %}selected{% endif %}>Pending</option>
+                            <option value="under_review" {% if workflow_filter == 'under_review' %}selected{% endif %}>Under Review</option>
+                            <option value="resolved" {% if workflow_filter == 'resolved' %}selected{% endif %}>Resolved</option>
+                            <option value="rejected" {% if workflow_filter == 'rejected' %}selected{% endif %}>Rejected</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="submit" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border: none; border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gradient-primary); color: var(--text-light); box-shadow: var(--shadow-lg);">
+                            <i class="fas fa-search"></i> Filter
+                        </button>
+                        <a href="{% url 'authority_dashboard' %}" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border: 2px solid var(--primary-color); border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: transparent; color: var(--primary-color);">
+                            <i class="fas fa-times"></i> Clear
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Reports Section -->
+            <div class="stat-card" style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); border: 1px solid rgba(99, 102, 241, 0.1);">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-secondary);"></div>
+                <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                    <h4 style="color: var(--text-primary); font-weight: 700; margin: 0; display: flex; align-items: center; gap: 0.75rem;">
+                        <i class="fas fa-clipboard-list" style="color: var(--primary-color);"></i>
+                        Reports ({{ reports.paginator.count }} total)
+                    </h4>
+                </div>
+                
+                {% if reports %}
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--bg-secondary);">
+                                    <th style="padding: 1rem; text-align: left; font-weight: 700; color: var(--text-primary); font-size: 0.9rem;">ID</th>
+                                    <th style="padding: 1rem; text-align: left; font-weight: 700; color: var(--text-primary); font-size: 0.9rem;">Photo</th>
+                                    <th style="padding: 1rem; text-align: left; font-weight: 700; color: var(--text-primary); font-size: 0.9rem;">Type</th>
+                                    <th style="padding: 1rem; text-align: left; font-weight: 700; color: var(--text-primary); font-size: 0.9rem;">Status</th>
+                                    <th style="padding: 1rem; text-align: left; font-weight: 700; color: var(--text-primary); font-size: 0.9rem;">Location</th>
+                                    <th style="padding: 1rem; text-align: left; font-weight: 700; color: var(--text-primary); font-size: 0.9rem;">Submitted By</th>
+                                    <th style="padding: 1rem; text-align: left; font-weight: 700; color: var(--text-primary); font-size: 0.9rem;">Date</th>
+                                    <th style="padding: 1rem; text-align: left; font-weight: 700; color: var(--text-primary); font-size: 0.9rem;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for report in reports %}
+                                <tr style="border-bottom: 1px solid var(--bg-secondary); transition: background-color 0.2s ease;" onmouseover="this.style.backgroundColor='var(--bg-secondary)'" onmouseout="this.style.backgroundColor='transparent'">
+                                    <td style="padding: 1rem; font-weight: 600; color: var(--primary-color);">#{{ report.id }}</td>
+                                    <td style="padding: 1rem;">
+                                        {% if report.photo %}
+                                            <img src="{{ report.photo.url }}" alt="Report Photo" style="width: 50px; height: 50px; object-fit: cover; border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+                                        {% else %}
+                                            <span style="color: var(--text-secondary); font-style: italic;">No Photo</span>
+                                        {% endif %}
+                                    </td>
+                                    <td style="padding: 1rem;">
+                                        <span style="padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 600; font-size: 0.8rem; {% if report.status == 'dirty' %}background: rgba(239, 68, 68, 0.1); color: var(--danger-color);{% else %}background: rgba(16, 185, 129, 0.1); color: var(--success-color);{% endif %}">
+                                            {{ report.status|title }}
+                                        </span>
+                                    </td>
+                                    <td style="padding: 1rem;">
+                                        <span style="padding: 0.25rem 0.75rem; border-radius: 20px; font-weight: 600; font-size: 0.8rem; {% if report.workflow_status == 'pending' %}background: rgba(245, 158, 11, 0.1); color: var(--warning-color);{% elif report.workflow_status == 'under_review' %}background: rgba(59, 130, 246, 0.1); color: var(--info-color);{% elif report.workflow_status == 'resolved' %}background: rgba(16, 185, 129, 0.1); color: var(--success-color);{% elif report.workflow_status == 'rejected' %}background: rgba(239, 68, 68, 0.1); color: var(--danger-color);{% endif %}">
+                                            {% if report.workflow_status == 'under_review' %}
+                                                Under Review
+                                            {% else %}
+                                                {{ report.workflow_status|title }}
+                                            {% endif %}
+                                        </span>
+                                    </td>
+                                    <td style="padding: 1rem;">
+                                        <small style="color: var(--text-secondary);">{{ report.address|truncatechars:30|default:"No Address" }}</small>
+                                    </td>
+                                    <td style="padding: 1rem; color: var(--text-secondary);">{{ report.user.username|default:"Anonymous" }}</td>
+                                    <td style="padding: 1rem; color: var(--text-secondary);">{{ report.submitted_at|date:"M d, Y" }}</td>
+                                    <td style="padding: 1rem;">
+                                        <a href="{% url 'report_detail_authority' report.id %}" class="btn" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border: none; border-radius: var(--border-radius); font-weight: 600; font-size: 0.8rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gradient-primary); color: var(--text-light); box-shadow: var(--shadow-sm);">
+                                            <i class="fas fa-eye"></i> Review
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    {% if reports.has_other_pages %}
+                        <nav style="display: flex; justify-content: center;">
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                {% if reports.has_previous %}
+                                    <a href="?{% if status_filter != 'all' %}status={{ status_filter }}&{% endif %}{% if workflow_filter != 'all' %}workflow={{ workflow_filter }}&{% endif %}page={{ reports.previous_page_number }}" style="padding: 0.5rem 1rem; border: 2px solid var(--primary-color); border-radius: var(--border-radius); color: var(--primary-color); text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                                        <i class="fas fa-chevron-left"></i> Previous
+                                    </a>
+                                {% endif %}
+
+                                {% for i in reports.paginator.page_range %}
+                                    <a href="?{% if status_filter != 'all' %}status={{ status_filter }}&{% endif %}{% if workflow_filter != 'all' %}workflow={{ workflow_filter }}&{% endif %}page={{ i }}" style="padding: 0.5rem 1rem; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: all 0.3s ease; {% if i == reports.number %}background: var(--gradient-primary); color: var(--text-light);{% else %}color: var(--primary-color); border: 2px solid transparent;{% endif %}">{{ i }}</a>
+                                {% endfor %}
+
+                                {% if reports.has_next %}
+                                    <a href="?{% if status_filter != 'all' %}status={{ status_filter }}&{% endif %}{% if workflow_filter != 'all' %}workflow={{ workflow_filter }}&{% endif %}page={{ reports.next_page_number }}" style="padding: 0.5rem 1rem; border: 2px solid var(--primary-color); border-radius: var(--border-radius); color: var(--primary-color); text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                                        Next <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </nav>
+                    {% endif %}
+                {% else %}
+                    <div style="text-align: center; padding: 3rem; color: var(--text-secondary);">
+                        <i class="fas fa-clipboard-list" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <h5 style="font-size: 1.25rem; margin-bottom: 0.5rem;">No reports found</h5>
+                        <p>No reports match your current filters.</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Quick Actions -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <div class="stat-card" style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-lg); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(99, 102, 241, 0.1);">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-accent);"></div>
+                    <i class="fas fa-map-marker-alt" style="font-size: 2rem; color: var(--info-color); margin-bottom: 1rem;"></i>
+                    <h6 style="font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Map View</h6>
+                    <a href="{% url 'report_map' %}" class="btn" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border: none; border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gradient-accent); color: var(--text-light); box-shadow: var(--shadow-lg);">
+                        <i class="fas fa-map-marker-alt"></i> View Reports on Map
+                    </a>
+                </div>
+                <div class="stat-card" style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-lg); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(99, 102, 241, 0.1);">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-secondary);"></div>
+                    <i class="fas fa-fire" style="font-size: 2rem; color: var(--warning-color); margin-bottom: 1rem;"></i>
+                    <h6 style="font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Hotspot Analysis</h6>
+                    <a href="{% url 'report_map' %}" class="btn" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border: none; border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gradient-secondary); color: var(--text-light); box-shadow: var(--shadow-lg);">
+                        <i class="fas fa-fire"></i> View Hotspots
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+/* Custom hover effects for form inputs */
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+}
+
+/* Button hover effects */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+.btn-outline:hover {
+    background: var(--primary-color) !important;
+    color: var(--text-light) !important;
+}
+
+/* Card hover effects */
+.stat-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Table hover animation */
+tbody tr:hover {
+    transform: scale(1.01);
+    box-shadow: var(--shadow-md);
+}
+
+/* Floating animation for icons */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.section-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+</style>
+{% endblock %}

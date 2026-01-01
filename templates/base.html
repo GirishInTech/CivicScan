@@ -9,7 +9,9 @@
 
     <!-- CSS & JS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/notifications.css' %}">
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/notifications.js' %}"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <!-- Icons -->
@@ -49,7 +51,16 @@
                   <a href="{% url 'submit_report' %}" class="nav-link">Report</a>
                   <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
                   <a href="{% url 'report_map' %}" class="nav-link">Reported Areas Map</a>
+                  <a href="{% url 'authority_dashboard' %}" class="nav-link">Authority Panel</a>
                   <a href="{% url 'report_data_json' %}" class="nav-link">JSON Format Stored Data</a>
+                  <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+              {% elif user.groups.all|length > 0 and user.groups.all.0.name == 'Authorities' %}
+                  <!-- Authority Nav -->
+                  <a href="{% url 'home' %}" class="nav-link">Home</a>
+                  <a href="{% url 'submit_report' %}" class="nav-link">Report</a>
+                  <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+                  <a href="{% url 'report_map' %}" class="nav-link">Map View</a>
+                  <a href="{% url 'authority_dashboard' %}" class="nav-link">Authority Panel</a>
                   <a href="{% url 'logout' %}" class="nav-link">Logout</a>
               {% else %}
                   <!-- Normal User Nav -->

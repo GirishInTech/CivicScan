@@ -11,9 +11,24 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-
+from channels.routing import ProtocolTypeRouter, URLRouter
+from channels.auth import AuthMiddlewareStack
 from django.core.asgi import get_asgi_application
+from django.urls import path
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'BrillianBengaluru.settings')
 
-application = get_asgi_application()
+# Import Django first
+django_asgi_app = get_asgi_application()
+
+# Import our WebSocket consumer
+from reports.consumers import NotificationConsumer
+
+application = ProtocolTypeRouter({
+    "http": django_asgi_app,
+    "websocket": AuthMiddlewareStack(
+        URLRouter([
+            path("ws/notifications/", NotificationConsumer.as_asgi()),
+        ])
+    ),
+})

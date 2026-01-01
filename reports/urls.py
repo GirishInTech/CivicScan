@@ -11,5 +11,10 @@ urlpatterns = [
     path('map/', views.report_map_view, name='report_map'),
     path('hotspots/data/', hotspot_data, name='hotspot_data'),
     path('test-hotspots/', lambda request: render(request, 'test_hotspots.html'), name='test_hotspots'),
+    
+    # Authority URLs
+    path('authority/', views.authority_dashboard, name='authority_dashboard'),
+    path('authority/report/<int:report_id>/', views.report_detail_authority, name='report_detail_authority'),
+    path('authority/data/', views.authority_reports_json, name='authority_reports_json'),
 ]
 

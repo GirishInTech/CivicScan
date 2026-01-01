@@ -1,0 +1,323 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Report #{{ report.id }} Details - CivicScan{% endblock %}
+
+{% block content %}
+<!-- Add top padding to account for fixed navbar -->
+<div style="padding-top: 80px;">
+    
+    <!-- Header Section -->
+    <section class="section-header" style="padding: 2rem 0;">
+        <div class="container">
+            <div style="margin-bottom: 2rem;">
+                <nav style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    <a href="{% url 'dashboard' %}" style="color: var(--primary-color); text-decoration: none; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.color='var(--secondary-color)'" onmouseout="this.style.color='var(--primary-color)'">
+                        <i class="fas fa-user-circle"></i> Dashboard
+                    </a>
+                    <i class="fas fa-chevron-right" style="color: var(--text-secondary);"></i>
+                    <span style="font-weight: 600;">Report #{{ report.id }}</span>
+                </nav>
+                
+                <div style="text-align: center;">
+                    <i class="fas fa-file-alt section-icon" style="color: var(--primary-color);"></i>
+                    <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Report Details #{{ report.id }}</h2>
+                    <p style="color: var(--text-secondary); font-size: 1.125rem;">Track your report progress and status</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <section style="background: var(--bg-secondary); padding: 2rem 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start;">
+                
+                <!-- Report Details -->
+                <div class="stat-card" style="background: var(--bg-primary); padding: 2.5rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-lg); border: 1px solid rgba(99, 102, 241, 0.1); position: relative;">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-primary);"></div>
+                    
+                    <!-- Status Timeline -->
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                            <i class="fas fa-timeline" style="color: var(--primary-color);"></i>
+                            Status Timeline
+                        </h4>
+                        
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <!-- Submitted -->
+                                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-success); display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-check" style="font-size: 1rem;"></i>
+                                    </div>
+                                    <span style="font-size: 0.8rem; font-weight: 600; color: var(--success-color);">Submitted</span>
+                                    <span style="font-size: 0.7rem; color: var(--text-secondary);">{{ report.submitted_at|date:"M d" }}</span>
+                                </div>
+                                
+                                <div style="width: 40px; height: 2px; background: {% if report.workflow_status != 'pending' %}var(--success-color){% else %}var(--bg-secondary){% endif %};"></div>
+                                
+                                <!-- Under Review -->
+                                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: {% if report.workflow_status == 'under_review' or report.workflow_status == 'resolved' or report.workflow_status == 'rejected' %}var(--gradient-accent){% else %}var(--bg-secondary){% endif %}; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-eye" style="font-size: 1rem;"></i>
+                                    </div>
+                                    <span style="font-size: 0.8rem; font-weight: 600; color: {% if report.workflow_status == 'under_review' or report.workflow_status == 'resolved' or report.workflow_status == 'rejected' %}var(--info-color){% else %}var(--text-secondary){% endif %};">Under Review</span>
+                                    <span style="font-size: 0.7rem; color: var(--text-secondary);">{% if report.reviewed_at %}{{ report.reviewed_at|date:"M d" }}{% else %}Pending{% endif %}</span>
+                                </div>
+                                
+                                <div style="width: 40px; height: 2px; background: {% if report.workflow_status == 'resolved' or report.workflow_status == 'rejected' %}var(--success-color){% else %}var(--bg-secondary){% endif %};"></div>
+                                
+                                <!-- Final Status -->
+                                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: {% if report.workflow_status == 'resolved' %}var(--gradient-success){% elif report.workflow_status == 'rejected' %}var(--gradient-secondary){% else %}var(--bg-secondary){% endif %}; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-{% if report.workflow_status == 'resolved' %}check-circle{% elif report.workflow_status == 'rejected' %}times-circle{% else %}clock{% endif %}" style="font-size: 1rem;"></i>
+                                    </div>
+                                    <span style="font-size: 0.8rem; font-weight: 600; color: {% if report.workflow_status == 'resolved' %}var(--success-color){% elif report.workflow_status == 'rejected' %}var(--danger-color){% else %}var(--text-secondary){% endif %};">
+                                        {% if report.workflow_status == 'resolved' %}Resolved
+                                        {% elif report.workflow_status == 'rejected' %}Rejected
+                                        {% else %}Pending{% endif %}
+                                    </span>
+                                    <span style="font-size: 0.7rem; color: var(--text-secondary);">{% if report.workflow_status == 'resolved' or report.workflow_status == 'rejected' %}{{ report.reviewed_at|date:"M d" }}{% else %}Waiting{% endif %}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Report Information -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                        <div>
+                            <h6 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid var(--bg-secondary); padding-bottom: 0.5rem;">Report Information</h6>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">Report Type:</strong>
+                                <span style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; {% if report.status == 'dirty' %}background: rgba(239, 68, 68, 0.1); color: var(--danger-color);{% else %}background: rgba(16, 185, 129, 0.1); color: var(--success-color);{% endif %}">
+                                    {{ report.status|title }}
+                                </span>
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">Current Status:</strong>
+                                <span style="padding: 0.5rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; {% if report.workflow_status == 'pending' %}background: rgba(245, 158, 11, 0.1); color: var(--warning-color);{% elif report.workflow_status == 'under_review' %}background: rgba(59, 130, 246, 0.1); color: var(--info-color);{% elif report.workflow_status == 'resolved' %}background: rgba(16, 185, 129, 0.1); color: var(--success-color);{% elif report.workflow_status == 'rejected' %}background: rgba(239, 68, 68, 0.1); color: var(--danger-color);{% endif %}">
+                                    {% if report.workflow_status == 'under_review' %}
+                                        Under Review
+                                    {% else %}
+                                        {{ report.workflow_status|title }}
+                                    {% endif %}
+                                </span>
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">Submitted:</strong>
+                                <p style="margin: 0; color: var(--text-primary); font-weight: 600;">{{ report.submitted_at|date:"F d, Y \a\t g:i A" }}</p>
+                            </div>
+                            
+                            <div>
+                                <strong style="color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">Report ID:</strong>
+                                <p style="margin: 0; color: var(--primary-color); font-weight: 700; font-family: monospace;">#{{ report.id }}</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h6 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid var(--bg-secondary); padding-bottom: 0.5rem;">Location Details</h6>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">Address:</strong>
+                                <p style="margin: 0; color: var(--text-primary); line-height: 1.6;">{{ report.address|default:"Address not available" }}</p>
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <strong style="color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">Coordinates:</strong>
+                                <small style="color: var(--text-secondary); font-family: monospace; background: var(--bg-secondary); padding: 0.5rem; border-radius: var(--border-radius); display: inline-block;">{{ report.location }}</small>
+                            </div>
+                            
+                            {% if report.reviewed_by %}
+                                <h6 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1rem; margin-top: 1.5rem; border-bottom: 2px solid var(--bg-secondary); padding-bottom: 0.5rem;">Authority Review</h6>
+                                <div style="margin-bottom: 1rem;">
+                                    <strong style="color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">Reviewed By:</strong>
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <div style="width: 30px; height: 30px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.8rem;">
+                                            {{ report.reviewed_by.first_name.0|default:report.reviewed_by.username.0|upper }}
+                                        </div>
+                                        <div>
+                                            <p style="margin: 0; color: var(--text-primary); font-weight: 600; font-size: 0.9rem;">{{ report.reviewed_by.first_name }} {{ report.reviewed_by.last_name }}</p>
+                                            <small style="color: var(--text-secondary);">{{ report.reviewed_by.username }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">Review Date:</strong>
+                                    <p style="margin: 0; color: var(--text-primary); font-weight: 600;">{{ report.reviewed_at|date:"F d, Y \a\t g:i A" }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- User Description -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <h6 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid var(--bg-secondary); padding-bottom: 0.5rem;">Your Description</h6>
+                        <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--border-radius); border-left: 4px solid var(--accent-color);">
+                            <p style="margin: 0; color: var(--text-primary); line-height: 1.7;">{{ report.review|linebreaks }}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Authority Comments -->
+                    {% if report.authority_comments %}
+                        <div>
+                            <h6 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1rem; border-bottom: 2px solid var(--bg-secondary); padding-bottom: 0.5rem;">Authority Comments</h6>
+                            <div style="background: rgba(59, 130, 246, 0.05); padding: 1.5rem; border-radius: var(--border-radius); border-left: 4px solid var(--info-color);">
+                                <p style="margin: 0; color: var(--text-primary); line-height: 1.7;">{{ report.authority_comments|linebreaks }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Sidebar: Photo and Actions -->
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; min-width: 300px;">
+                    
+                    <!-- Photo Card -->
+                    <div class="stat-card" style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-lg); border: 1px solid rgba(99, 102, 241, 0.1); position: relative;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-accent);"></div>
+                        <h6 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; justify-content: center;">
+                            <i class="fas fa-camera" style="color: var(--accent-color);"></i>
+                            Report Photo
+                        </h6>
+                        {% if report.photo %}
+                            <img src="{{ report.photo.url }}" alt="Report Photo" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 1rem; box-shadow: var(--shadow-md);">
+                            <a href="{{ report.photo.url }}" target="_blank" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border: 2px solid var(--primary-color); border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: transparent; color: var(--primary-color);">
+                                <i class="fas fa-external-link-alt"></i> View Full Size
+                            </a>
+                        {% else %}
+                            <div style="color: var(--text-secondary); padding: 3rem 0;">
+                                <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                                <p style="margin: 0;">No photo uploaded</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Status Card -->
+                    <div class="stat-card" style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-lg); border: 1px solid rgba(99, 102, 241, 0.1); position: relative;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: {% if report.workflow_status == 'pending' %}var(--gradient-accent){% elif report.workflow_status == 'under_review' %}var(--gradient-primary){% elif report.workflow_status == 'resolved' %}var(--gradient-success){% elif report.workflow_status == 'rejected' %}var(--gradient-secondary){% endif %};"></div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <i class="fas fa-{% if report.workflow_status == 'pending' %}clock{% elif report.workflow_status == 'under_review' %}eye{% elif report.workflow_status == 'resolved' %}check-circle{% elif report.workflow_status == 'rejected' %}times-circle{% endif %}" style="font-size: 3rem; margin-bottom: 1rem; color: {% if report.workflow_status == 'pending' %}var(--warning-color){% elif report.workflow_status == 'under_review' %}var(--info-color){% elif report.workflow_status == 'resolved' %}var(--success-color){% elif report.workflow_status == 'rejected' %}var(--danger-color){% endif %};"></i>
+                            <h6 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.5rem;">
+                                {% if report.workflow_status == 'pending' %}Waiting for Review
+                                {% elif report.workflow_status == 'under_review' %}Currently Under Review
+                                {% elif report.workflow_status == 'resolved' %}Successfully Resolved
+                                {% elif report.workflow_status == 'rejected' %}Report Rejected
+                                {% endif %}
+                            </h6>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">
+                                {% if report.workflow_status == 'pending' %}Your report is in the queue for authority review
+                                {% elif report.workflow_status == 'under_review' %}An authority is currently reviewing your report
+                                {% elif report.workflow_status == 'resolved' %}Your report has been successfully addressed
+                                {% elif report.workflow_status == 'rejected' %}Your report was rejected - see comments below
+                                {% endif %}
+                            </p>
+                        </div>
+                        
+                        {% if report.workflow_status == 'pending' %}
+                            <div style="background: rgba(245, 158, 11, 0.1); padding: 1rem; border-radius: var(--border-radius); border: 1px solid rgba(245, 158, 11, 0.2); margin-bottom: 1rem;">
+                                <small style="color: var(--warning-color); font-weight: 600;">
+                                    <i class="fas fa-info-circle"></i> We'll notify you once an authority reviews your report
+                                </small>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Actions Card -->
+                    <div class="stat-card" style="background: var(--bg-primary); padding: 2rem; border-radius: var(--border-radius-lg); text-align: center; box-shadow: var(--shadow-lg); border: 1px solid rgba(99, 102, 241, 0.1); position: relative;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-secondary);"></div>
+                        <h6 style="color: var(--text-primary); font-weight: 700; margin-bottom: 1.5rem;">Actions</h6>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            {% if report.workflow_status == 'pending' %}
+                                <a href="{% url 'edit_report' report.id %}" class="btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.875rem 1.5rem; border: none; border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gradient-accent); color: var(--text-light); box-shadow: var(--shadow-lg); width: 100%;">
+                                    <i class="fas fa-edit"></i> Edit Report
+                                </a>
+                                <a href="{% url 'delete_report' report.id %}" class="btn-danger" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.875rem 1.5rem; border: none; border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gradient-secondary); color: var(--text-light); box-shadow: var(--shadow-lg); width: 100%;">
+                                    <i class="fas fa-trash-alt"></i> Delete Report
+                                </a>
+                                <div style="border-top: 1px solid var(--bg-secondary); margin: 0.5rem 0;"></div>
+                            {% else %}
+                                <div style="background: rgba(245, 158, 11, 0.1); padding: 1rem; border-radius: var(--border-radius); border: 1px solid rgba(245, 158, 11, 0.2); margin-bottom: 1rem;">
+                                    <small style="color: var(--warning-color); font-weight: 600; display: block; text-align: center;">
+                                        <i class="fas fa-lock"></i> Editing disabled - Report under authority review
+                                    </small>
+                                </div>
+                            {% endif %}
+                            
+                            <a href="{% url 'dashboard' %}" class="btn btn-outline" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.875rem 1.5rem; border: 2px solid var(--primary-color); border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: transparent; color: var(--primary-color); width: 100%;">
+                                <i class="fas fa-arrow-left"></i> Back to Dashboard
+                            </a>
+                            <a href="{% url 'submit_report' %}" class="btn" style="display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.875rem 1.5rem; border: none; border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gradient-primary); color: var(--text-light); box-shadow: var(--shadow-lg); width: 100%;">
+                                <i class="fas fa-plus"></i> Submit New Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+/* Button hover effects */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl) !important;
+}
+
+.btn-outline:hover {
+    background: var(--primary-color) !important;
+    color: var(--text-light) !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* Danger button styling */
+.btn-danger {
+    background: var(--gradient-secondary) !important;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Card hover effects */
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating animation for icons */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.section-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    div[style*="grid-template-columns: 1fr auto"] {
+        grid-template-columns: 1fr !important;
+    }
+    
+    div[style*="min-width: 300px"] {
+        min-width: unset !important;
+    }
+    
+    div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+    
+    div[style*="display: flex; align-items: center; gap: 1rem;"] {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+}
+</style>
+{% endblock %}

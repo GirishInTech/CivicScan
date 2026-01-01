@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'reports',
     'homepage',
     'users',
@@ -84,6 +85,14 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'BrillianBengaluru.wsgi.application'
+ASGI_APPLICATION = 'BrillianBengaluru.asgi.application'
+
+# Channels configuration
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',  # For development
+    }
+}
 
 
 # Database
