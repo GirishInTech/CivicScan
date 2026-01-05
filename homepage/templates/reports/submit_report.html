@@ -1,52 +1,130 @@
-
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}Submit a Report - CivicScan{% endblock %}
+
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Submit a Report</title>
-    {% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<script src="{% static 'js/script.js' %}"></script>
+<div style="padding-top: 80px; min-height: calc(100vh - 160px);">
+    <section style="background: var(--bg-secondary); padding: 3rem 0;">
+        <div class="container" style="max-width: 700px;">
+            <div class="report-form-container" style="background: var(--bg-primary); padding: 2.5rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-xl); border: 1px solid rgba(99, 102, 241, 0.1); position: relative;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-primary);"></div>
+                
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <i class="fas fa-camera" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Report a Place</h2>
+                    <p style="color: var(--text-secondary); font-size: 1rem;">Help make your community cleaner by reporting issues</p>
+                </div>
 
-</head>
-<body>
-    <br>
+                <form method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label for="photo" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600; font-size: 0.95rem;">
+                            <i class="fas fa-camera"></i> Click Photo
+                            <span style="color: var(--danger-color);">*</span>
+                        </label>
+                        <input type="file" name="photo" id="photo" accept="image/*" capture="environment" required style="display: block; width: 100%; padding: 0.875rem; border: 2px dashed var(--primary-color); border-radius: var(--border-radius); font-size: 0.95rem; transition: all 0.3s ease; background: var(--bg-secondary); cursor: pointer;">
+                    </div>
 
-<div class="report-form-container">
-    <h2>Report a Place</h2>
+                    <div class="form-group">
+                        <label for="status" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600; font-size: 0.95rem;">
+                            <i class="fas fa-check-circle"></i> Is the place clean or dirty?
+                            <span style="color: var(--danger-color);">*</span>
+                        </label>
+                        <select name="status" id="status" required style="display: block; width: 100%; padding: 0.875rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: var(--border-radius); font-size: 0.95rem; color: var(--text-primary); background: var(--bg-primary); transition: all 0.3s ease; cursor: pointer;">
+                            <option value="">-- Select Status --</option>
+                            <option value="clean">🟢 Clean</option>
+                            <option value="dirty">🔴 Dirty</option>
+                        </select>
+                    </div>
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        <label for="photo">Click photo:</label>
-        <input type="file" name="photo" accept="image/*" capture="environment" required>
+                    <div class="form-group">
+                        <label for="location" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600; font-size: 0.95rem;">
+                            <i class="fas fa-map-marker-alt"></i> Location
+                            <span style="color: var(--danger-color);">*</span>
+                            <span id="locationStatus" style="font-size: 0.8rem; color: var(--info-color); margin-left: 0.5rem;"></span>
+                        </label>
+                        <input type="text" name="location" id="location" required readonly style="display: block; width: 100%; padding: 0.875rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: var(--border-radius); font-size: 0.95rem; color: var(--text-primary); background: var(--bg-secondary); transition: all 0.3s ease;">
+                        <small style="display: block; margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.85rem;">
+                            <i class="fas fa-info-circle"></i> Location will be auto-filled using GPS
+                        </small>
+                    </div>
 
-        <label for="status">Is the place clean or dirty?</label>
-        <select name="status" required>
-            <option value="clean">Clean</option>
-            <option value="dirty">Dirty</option>
-        </select>
+                    <div class="form-group">
+                        <label for="review" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600; font-size: 0.95rem;">
+                            <i class="fas fa-comment"></i> Why is the place clean/dirty? Suggestions?
+                            <span style="color: var(--danger-color);">*</span>
+                        </label>
+                        <textarea name="review" id="review" rows="4" required placeholder="Describe the condition and provide suggestions for improvement..." style="display: block; width: 100%; padding: 0.875rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: var(--border-radius); font-size: 0.95rem; color: var(--text-primary); background: var(--bg-primary); transition: all 0.3s ease; resize: vertical; font-family: inherit;"></textarea>
+                    </div>
 
-        <label for="location">Location (auto-filled if enabled):</label>
-        <input type="text" name="location" id="location" required>
-
-        <label for="review">Why is the place clean/dirty? Suggestions?</label>
-        <textarea name="review" rows="4" required></textarea>
-
-        <button type="submit">Submit Report</button>
-    </form>
+                    <button type="submit" style="padding: 1rem 2rem; border: none; border-radius: var(--border-radius); font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gradient-primary); color: var(--text-light); box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center; gap: 0.75rem; width: 100%;">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Submit Report</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
 </div>
 
-<script>
-    navigator.geolocation.getCurrentPosition(function(position) {
-        const coords = `${position.coords.latitude}, ${position.coords.longitude}`;
-        document.getElementById('location').value = coords;
-    });
-</script>
+<style>
+#photo:hover, #status:hover, #status:focus, #review:hover, #review:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
 
-</body>
-</html>
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem !important;
+    }
+    
+    .report-form-container {
+        padding: 1.5rem !important;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const locationInput = document.getElementById('location');
+    const locationStatus = document.getElementById('locationStatus');
+    
+    locationStatus.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Detecting location...';
+    locationStatus.style.color = 'var(--info-color)';
+    
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                const coords = `${position.coords.latitude}, ${position.coords.longitude}`;
+                locationInput.value = coords;
+                locationStatus.innerHTML = '<i class="fas fa-check-circle"></i> Location detected';
+                locationStatus.style.color = 'var(--success-color)';
+            },
+            function(error) {
+                locationStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Could not detect location';
+                locationStatus.style.color = 'var(--danger-color)';
+                locationInput.readOnly = false;
+                locationInput.placeholder = 'Enter coordinates manually (e.g., 12.9716, 77.5946)';
+                console.error('Geolocation error:', error);
+            }
+        );
+    } else {
+        locationStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Geolocation not supported';
+        locationStatus.style.color = 'var(--danger-color)';
+        locationInput.readOnly = false;
+        locationInput.placeholder = 'Enter coordinates manually (e.g., 12.9716, 77.5946)';
+    }
+});
+</script>
 {% endblock %}

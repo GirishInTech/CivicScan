@@ -1,38 +1,142 @@
-<!-- templates/registration/login.html -->
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}Login - CivicScan{% endblock %}
+
 {% block content %}
+<div style="padding-top: 80px; min-height: calc(100vh - 160px); display: flex; align-items: center; justify-content: center; background: var(--bg-secondary);">
+    <div class="container" style="max-width: 450px;">
+        <div class="login-container" style="background: var(--bg-primary); padding: 2.5rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-xl); border: 1px solid rgba(99, 102, 241, 0.1); position: relative;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-primary);"></div>
+            
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: var(--shadow-lg);">
+                    <i class="fas fa-user" style="font-size: 2rem; color: var(--text-light);"></i>
+                </div>
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Welcome Back</h2>
+                <p style="color: var(--text-secondary); font-size: 1rem;">Sign in to your CivicScan account</p>
+            </div>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
+            {% if form.errors %}
+            <div style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid var(--danger-color); padding: 1rem; border-radius: var(--border-radius); margin-bottom: 1.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <i class="fas fa-exclamation-circle" style="color: var(--danger-color); font-size: 1.25rem;"></i>
+                    <div>
+                        <p style="color: var(--danger-color); font-weight: 600; margin: 0;">Login Failed</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0.25rem 0 0 0;">Please check your username and password</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <form method="post" novalidate style="display: flex; flex-direction: column; gap: 1.5rem;">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600; font-size: 0.95rem;">
+                        <i class="fas fa-user"></i> Username
+                        <span style="color: var(--danger-color);">*</span>
+                    </label>
+                    <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" required autocomplete="username" placeholder="Enter your username" style="display: block; width: 100%; padding: 0.875rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: var(--border-radius); font-size: 0.95rem; color: var(--text-primary); background: var(--bg-primary); transition: all 0.3s ease;">
+                    {% if form.username.errors %}
+                        {% for error in form.username.errors %}
+                        <small style="color: var(--danger-color); font-size: 0.85rem; display: block; margin-top: 0.5rem;">
+                            <i class="fas fa-exclamation-circle"></i> {{ error }}
+                        </small>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password.id_for_label }}" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600; font-size: 0.95rem;">
+                        <i class="fas fa-lock"></i> Password
+                        <span style="color: var(--danger-color);">*</span>
+                    </label>
+                    <div style="position: relative;">
+                        <input type="password" name="{{ form.password.name }}" id="{{ form.password.id_for_label }}" required autocomplete="current-password" placeholder="Enter your password" style="display: block; width: 100%; padding: 0.875rem; padding-right: 3rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: var(--border-radius); font-size: 0.95rem; color: var(--text-primary); background: var(--bg-primary); transition: all 0.3s ease;">
+                        <button type="button" id="togglePassword" style="position: absolute; right: 0.875rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 0.5rem; font-size: 1rem; transition: color 0.3s ease;" aria-label="Toggle password visibility">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                        <small style="color: var(--danger-color); font-size: 0.85rem; display: block; margin-top: 0.5rem;">
+                            <i class="fas fa-exclamation-circle"></i> {{ error }}
+                        </small>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="login-button" style="padding: 1rem 2rem; border: none; border-radius: var(--border-radius); font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gradient-primary); color: var(--text-light); box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center; gap: 0.75rem; width: 100%;">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Sign In</span>
+                </button>
+            </form>
+
+            <div style="margin-top: 1.5rem; text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(99, 102, 241, 0.1);">
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                    Don't have an account? 
+                    <a href="{% url 'signup' %}" style="color: var(--primary-color); font-weight: 600; text-decoration: none; transition: color 0.3s ease;">
+                        Sign up here
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.form-group input:hover,
+.form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    outline: none;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+#togglePassword:hover {
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem !important;
+    }
     
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<script src="{% static 'js/script.js' %}"></script>
+    .login-container {
+        padding: 1.5rem !important;
+    }
+}
+</style>
 
-</head>
-<body>
-    <div class="login-container">
-    <h2>Login</h2>
-    <form method="post" novalidate>
-        {% csrf_token %}
-        
-        <div class="form-group">
-            <label for="{{ form.username.id_for_label }}">Username</label>
-            {{ form.username }}
-            {{ form.username.errors }}
-        </div>
-
-        <div class="form-group">
-            <label for="{{ form.password.id_for_label }}">Password</label>
-            {{ form.password }}
-            {{ form.password.errors }}
-        </div>
-
-        <button type="submit" class="login-button">Login</button>
-    </form>
-  </div>
-</body>
-</html>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('{{ form.password.id_for_label }}');
+    
+    if (togglePassword && passwordInput) {
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            const icon = this.querySelector('i');
+            if (type === 'password') {
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        });
+    }
+});
+</script>
 {% endblock %}
