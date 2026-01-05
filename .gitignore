@@ -2,4 +2,5 @@
 db.sqlite3
 
 # Environment variables file
-.env
+.env__pycache__/
+*.pyc
