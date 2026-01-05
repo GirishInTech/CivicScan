@@ -1,88 +1,78 @@
 {% extends 'base.html' %}
-{% block content %}
-<br>
-<script src="https://cdn.tailwindcss.com"></script>
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<script src="{% static 'js/script.js' %}"></script>
 
+{% block title %}Submission Successful - CivicScan{% endblock %}
 
-<div class="thank-you-section-bg" style="text-align: center; margin-top: 60px;">
-    <h2 style="font-size:50px">✅ Thank you for your submission!</h2>
-    {% comment %} <p>Your Report ID is: <strong>{{ report_id }}</strong></p> {% endcomment %}
-
-    <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
-      <!-- Submit Another Report Button -->
-      <div class="relative group">
-        <a href="{% url 'submit_report' %}"
-           class="relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
-          
-          <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
-
-          <span class="relative z-10 block px-6 py-3 rounded-xl bg-gray-950">
-            <div class="relative z-10 flex items-center space-x-2">
-              <span class="transition-all duration-500 group-hover:translate-x-1">Submit Another Report</span>
-              <svg class="w-6 h-6 transition-transform duration-500 group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" />
-              </svg>
+{% block content %}
+<div style="padding-top: 80px; min-height: calc(100vh - 160px); display: flex; align-items: center; justify-content: center; background: var(--bg-secondary);">
+    <div class="container" style="max-width: 700px;">
+        <div style="background: var(--bg-primary); padding: 3rem 2rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-xl); border: 1px solid rgba(99, 102, 241, 0.1); position: relative; text-align: center;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gradient-success);"></div>
+            
+            <!-- Success Icon -->
+            <div style="width: 100px; height: 100px; background: var(--gradient-success); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: var(--shadow-lg); animation: successPulse 2s ease-in-out;">
+                <i class="fas fa-check" style="font-size: 3rem; color: var(--text-light);"></i>
             </div>
-          </span>
-        </a>
-      </div>
-
-      <!-- Go to Dashboard Button -->
-      <div class="relative group">
-        <a href="{% url 'home' %}"
-           class="relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
-          
-          <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
-
-          <span class="relative z-10 block px-6 py-3 rounded-xl bg-gray-950">
-            <div class="relative z-10 flex items-center space-x-2">
-              <span class="transition-all duration-500 group-hover:translate-x-1">Go to Homepage</span>
-              <svg class="w-6 h-6 transition-transform duration-500 group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" />
-              </svg>
+            
+            <h2 style="font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; background: var(--gradient-success); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Thank You!</h2>
+            <p style="color: var(--text-secondary); font-size: 1.125rem; margin-bottom: 2rem; line-height: 1.6;">Your report has been submitted successfully. You can track its status from your dashboard.</p>
+            
+            <!-- Action Buttons -->
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
+                <a href="{% url 'dashboard' %}" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 2rem; border: none; border-radius: var(--border-radius); font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: var(--gradient-primary); color: var(--text-light); box-shadow: var(--shadow-lg);">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Go to Dashboard</span>
+                </a>
+                
+                <a href="{% url 'submit_report' %}" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 2rem; border: 2px solid var(--primary-color); border-radius: var(--border-radius); font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); background: transparent; color: var(--primary-color);">
+                    <i class="fas fa-plus"></i>
+                    <span>Submit Another Report</span>
+                </a>
+                
+                <a href="{% url 'home' %}" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 2rem; border: none; border-radius: var(--border-radius); font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--text-secondary);">
+                    <i class="fas fa-home"></i>
+                    <span>Back to Home</span>
+                </a>
             </div>
-          </span>
-        </a>
-      </div>
+        </div>
     </div>
-
-    {% comment %} <div style="margin-top: 30px;">
-        <a href="{% url 'submit_report' %}" class="nav-link" style="margin-right: 20px; font-weight: bold;">Submit Another Report</a>
-        <a href="{% url 'dashboard' %}" class="nav-link" style="font-weight: bold;">Go to Dashboard</a>
-    </div> {% endcomment %}
 </div>
 
+<style>
+@keyframes successPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: var(--shadow-lg);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+    }
+}
+
+a[style*="background: var(--gradient-primary)"]:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+a[style*="border: 2px solid var(--primary-color)"]:hover {
+    background: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-2px);
+}
+
+a[style*="color: var(--text-secondary)"]:hover {
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem !important;
+    }
+    
+    h2 {
+        font-size: 1.75rem !important;
+    }
+}
+</style>
 {% endblock %}
-
-
-
-
-
-
-
-
-{% comment %} {% extends "base.html" %}
-{% block content %}
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Submit a Report</title>
-    <link rel="stylesheet" href="{% static 'homepage/style.css' %}">
-</head>
-<body>
-
-<h2>Thank you for your report!</h2>
-<p>Your submission has been received.</p>
-<p>Your Report ID is: {{ report_id }}</p>
-
-</body>
-</html>
-{% endblock %} {% endcomment %}
