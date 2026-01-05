@@ -1,6 +1,9 @@
-# Ignore SQLite database (you’re using PostgreSQL)
+# Ignore SQLite database (you're using PostgreSQL)
 db.sqlite3
 
 # Environment variables file
-.env__pycache__/
+.env
+
+# Python cache files
+__pycache__/
 *.pyc

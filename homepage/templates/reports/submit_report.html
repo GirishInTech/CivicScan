@@ -45,9 +45,9 @@
                             <span style="color: var(--danger-color);">*</span>
                             <span id="locationStatus" style="font-size: 0.8rem; color: var(--info-color); margin-left: 0.5rem;"></span>
                         </label>
-                        <input type="text" name="location" id="location" required readonly style="display: block; width: 100%; padding: 0.875rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: var(--border-radius); font-size: 0.95rem; color: var(--text-primary); background: var(--bg-secondary); transition: all 0.3s ease;">
-                        <small style="display: block; margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.85rem;">
-                            <i class="fas fa-info-circle"></i> Location will be auto-filled using GPS
+                        <input type="text" name="location" id="location" required readonly aria-label="Location coordinates" aria-describedby="locationHelp" style="display: block; width: 100%; padding: 0.875rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: var(--border-radius); font-size: 0.95rem; color: var(--text-primary); background: var(--bg-secondary); transition: all 0.3s ease;">
+                        <small id="locationHelp" style="display: block; margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.85rem;">
+                            <i class="fas fa-info-circle"></i> Location will be auto-filled using GPS. If detection fails, you can enter coordinates manually.
                         </small>
                     </div>
 
