@@ -1,35 +1,35 @@
 # Core Django + WSGI server
-Django==5.1
-gunicorn==21.2.0
-channels==4.0.0
-channels-redis==4.1.0
+Django
+gunicorn
+channels
+channels-redis
 
 # DB + Env config
-mysqlclient==2.2.4
-python-decouple==3.8
+mysqlclient
+python-decouple
 
 # Static/Media file storage
-cloudinary==1.44.1
-django-cloudinary-storage==0.3.0
+cloudinary
+django-cloudinary-storage
 
 # Security
-bcrypt==4.1.3
-argon2-cffi==23.1.0
-cryptography==43.0.0
+bcrypt
+argon2-cffi
+cryptography
 
 # HTTP utilities
-requests==2.31.0
-geopy==2.4.1
+requests
+geopy
 
 # Machine Learning
-scikit-learn==1.3.0
-pandas==2.0.3
-numpy==1.24.3
+scikit-learn
+pandas
+numpy
 
-whitenoise==6.6.0
-psycopg2-binary>=2.9
+whitenoise
+psycopg2-binary
 dj-database-url
 python-dotenv
-setuptools>=65.0.0
+setuptools
 wheel
 channels
