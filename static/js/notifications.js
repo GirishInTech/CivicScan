@@ -300,7 +300,8 @@ let notificationSystem;
 document.addEventListener('DOMContentLoaded', function() {
     notificationSystem = new NotificationSystem();
     
-    // Request notification permission on first visit
+    // Request notification permission on first visit (DISABLED)
+    /*
     if ('Notification' in window && Notification.permission === 'default') {
         // Show a subtle prompt to enable notifications
         setTimeout(() => {
@@ -309,6 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 3000);
     }
+    */
 });
 
 // Cleanup on page unload
