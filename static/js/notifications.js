@@ -28,6 +28,8 @@ class NotificationSystem {
     }
 
     initWebSocket() {
+        return; // Disabled notification connection
+        
         if (!window.WebSocket) {
             return false;
         }

@@ -6,4 +6,4 @@ class ReportsConfig(AppConfig):
     name = 'reports'
     
     def ready(self):
-        import reports.signals  # Register signals
+        pass # import reports.signals  # Disabled notification signals

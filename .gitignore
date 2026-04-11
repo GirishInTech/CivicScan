@@ -81,3 +81,5 @@ env/
 
 # Temporary data files
 supabase_clean_data.json
+export_all_data.py
+PROJECT_ANALYSIS.md
